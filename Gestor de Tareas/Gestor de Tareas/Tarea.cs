@@ -39,7 +39,7 @@ namespace Gestor_de_Tareas
         // Detalle interno de cancelación
         private string _motivoCancelacion;
 
-        public Tarea (string titulo ,DateTime fechaLimite, PrioridadTarea prioridad, string descripcion = null)
+        public Tarea (string titulo ,DateTime fechaLimite, PrioridadTarea prioridad, string descripcion)
         {
             if (string.IsNullOrWhiteSpace(titulo))throw new ArgumentException("El título es obligatorio", nameof(titulo));
             if (fechaLimite.Date<DateTime.Today) throw new ArgumentException("La fecha límite no puede ser anterior a hoy");
