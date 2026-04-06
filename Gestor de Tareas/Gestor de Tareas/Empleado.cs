@@ -6,6 +6,7 @@ namespace Gestor_de_Tareas
 {
     internal class Empleado
     {
+        const decimal DESCUENTO_BASE = 0.5m;
         public string Nombre { get; set; }
         public string Departamento { get; set; }
         protected decimal _salarioBase;
@@ -17,7 +18,7 @@ namespace Gestor_de_Tareas
 
         public virtual decimal CalcularBonificacion()
         {
-            return _salarioBase * 0.5m;
+            return _salarioBase * DESCUENTO_BASE;
         }
 
         public Empleado(string nombre, string departamento, decimal salarioBase)

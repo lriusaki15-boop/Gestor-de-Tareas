@@ -36,6 +36,7 @@ catch (ArgumentException ex)
 EmpleadoPorHoras datosEmpleadoPorHoras = new EmpleadoPorHoras("Miguel", "Desarrollo", 1500m, 6, 100m);
 Console.WriteLine(datosEmpleado.ObtenerSalario() + " " + datosEmpleadoPorHoras.ObtenerSalario());*/
 
+/* Ejercico 3
 var empleados = new List<Empleado> { new Empleado("Miguel", "Recursos Humanos", 1500m),
     new Comercial("Alberto", "Comercial", 1500m, 8),
     new Desarrollador("Maria", "Desarrollo", 1500m,5)
@@ -43,4 +44,15 @@ var empleados = new List<Empleado> { new Empleado("Miguel", "Recursos Humanos", 
 
 foreach (var empleado in empleados)
     Console.WriteLine($"{empleado.Nombre} - {empleado.Departamento}: {empleado.CalcularBonificacion():C}");
+*/
+/* Ejercicio 4
+var archivos = new List<Generador_Reporte> { new ReportePDF("Programacion para Tontos"), new ReporteExcell("Excell para TONTOS") };
+
+foreach (var archivo in archivos)
+    Console.WriteLine($"PDF generado:{archivo.Generar(8)}---- Excell Generado:{archivo.Generar(5)}");
+*/
+
+MotorNotificacion notificaciones = new MotorNotificacion();
+var listaNotificaciones = new List<INotificable> { new NotificadorEmail("server.com"), new NotificadorSMS("546484684", "+34") };
+notificaciones.EnviarATodos(listaNotificaciones, "Mensaje estandar", "Esto es un mensaj de tu fencomputadora");
 
