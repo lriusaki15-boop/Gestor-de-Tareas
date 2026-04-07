@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Gestor_de_Tareas
 {
-    internal class Tarea
+    internal abstract class Tarea
     {
         public enum PrioridadTarea { Baja, Media, Alta }
         public enum EstadoTarea { Pendiente, EnProgreso, Completada, Cancelada }
-        public Guid Id { get; }
+        public int Id { get; }
         public string Titulo { get; }
         public string Descripcion { get; }
         public DateTime FechaCreacion { get; }
@@ -18,12 +18,12 @@ namespace Gestor_de_Tareas
         public EstadoTarea Estado => _estado;
         private string _motivoCancelacion;
 
-        public Tarea(string titulo, DateTime fechaLimite, PrioridadTarea prioridad, string descripcion)
+        protected Tarea(int id,string titulo, DateTime fechaLimite, PrioridadTarea prioridad, string descripcion)
         {
             if (string.IsNullOrWhiteSpace(titulo)) throw new ArgumentException("El título es obligatorio", nameof(titulo));
             if (fechaLimite.Date < DateTime.Today) throw new ArgumentException("La fecha límite no puede ser anterior a hoy");
 
-            Id = Guid.NewGuid();
+            Id = id;
             Titulo = titulo.Trim();
             Descripcion = descripcion?.Trim() ?? string.Empty;
             FechaCreacion = DateTime.Now;
@@ -57,6 +57,8 @@ namespace Gestor_de_Tareas
             _motivoCancelacion = motivo ?? "Sin especificar";
             return true;
         }
+
+        public abstract string ObtenerResumen();
 
         public override string ToString()
         {
