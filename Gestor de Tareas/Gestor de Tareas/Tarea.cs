@@ -13,6 +13,7 @@ namespace Gestor_de_Tareas
         public string Descripcion { get; }
         public DateTime FechaCreacion { get; }
         public DateTime FechaLimite { get; }
+        public DateTime FechaFinTarea { get; }
         public PrioridadTarea Prioridad { get; }
         private EstadoTarea _estado;
         public EstadoTarea Estado => _estado;
