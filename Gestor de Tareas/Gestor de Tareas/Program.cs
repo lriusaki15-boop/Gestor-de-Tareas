@@ -52,7 +52,18 @@ foreach (var archivo in archivos)
     Console.WriteLine($"PDF generado:{archivo.Generar(8)}---- Excell Generado:{archivo.Generar(5)}");
 */
 
+/*Ejercicio 5
 MotorNotificacion notificaciones = new MotorNotificacion();
 var listaNotificaciones = new List<INotificable> { new NotificadorEmail("server.com"), new NotificadorSMS("546484684", "+34") };
-notificaciones.EnviarATodos(listaNotificaciones, "Mensaje estandar", "Esto es un mensaj de tu fencomputadora");
+notificaciones.EnviarATodos(listaNotificaciones, "Mensaje estandar", "Esto es un mensaj de tu fencomputadora");*/
+
+HistorialDeNavegacion historia = new HistorialDeNavegacion();
+historia.Navegar("Estoy en la parte de atras");
+Console.WriteLine($"Esto es adelante: {historia.Adelante()}\nEsto es para atras: {historia.Atras()}");
+historia.Navegar("Estoy en la parte de alant");
+Console.WriteLine($"Esto es adelante: {historia.Adelante()}\nEsto es para atras: {historia.Atras()}");
+historia.Navegar("Estoy en la parte de atrasante");
+Console.WriteLine($"Esto es adelante: {historia.Adelante()}\nEsto es para atras: {historia.Atras()}");
+historia.Navegar("Estoy en la parte de alante");
+Console.WriteLine($"Esto es para atras: {historia.Atras()} \nEsto es adelante: {historia.Adelante()}");
 
