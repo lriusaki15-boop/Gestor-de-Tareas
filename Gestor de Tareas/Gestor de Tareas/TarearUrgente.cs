@@ -12,6 +12,18 @@ namespace Gestor_de_Tareas
             this.Responsable = responsable;
         }
 
+        public bool HacerTareaUrgente()
+        {
+            if (string.IsNullOrEmpty(this.Responsable)) throw new ArgumentException("A la tarea le falta asignarle un responsable");
+            if (Estado != EstadoTarea.Completada && Estado != EstadoTarea.Cancelada)
+            {
+                this.Prioridad = PrioridadTarea.Alta;
+            }
+            else if (string.IsNullOrEmpty(this.Responsable)) throw new ArgumentException("A la tarea le falta asignarle un responsable");
+
+            return false;
+        }
+
         public override string ObtenerResumen()
         {
             return $"Esta tarea con titulo: {this.Titulo} \n Fecha de Creacion: {this.FechaCreacion} \n Fecha Limite: {this.FechaLimite} \n Dias restantes para finalizacion: {this.DiasRestantes} Dias " +

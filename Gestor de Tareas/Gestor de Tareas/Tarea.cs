@@ -14,7 +14,7 @@ namespace Gestor_de_Tareas
         public DateTime FechaCreacion { get; }
         public DateTime FechaLimite { get; }
         public DateTime FechaFinTarea { get; }
-        public PrioridadTarea Prioridad { get; }
+        public PrioridadTarea Prioridad { get; set; }
         private EstadoTarea _estado;
         public EstadoTarea Estado => _estado;
         private string _motivoCancelacion;
