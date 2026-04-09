@@ -12,14 +12,13 @@ namespace Gestor_de_Tareas
             this.Responsable = responsable;
         }
 
-        public bool HacerTareaUrgente()
+        public bool HacerTareaUrgente(string responsable)
         {
             if (string.IsNullOrEmpty(this.Responsable)) throw new ArgumentException("A la tarea le falta asignarle un responsable");
             if (Estado != EstadoTarea.Completada && Estado != EstadoTarea.Cancelada)
             {
                 this.Prioridad = PrioridadTarea.Alta;
             }
-            else if (string.IsNullOrEmpty(this.Responsable)) throw new ArgumentException("A la tarea le falta asignarle un responsable");
 
             return false;
         }
