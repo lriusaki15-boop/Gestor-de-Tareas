@@ -23,7 +23,7 @@ namespace Gestor_de_Tareas
 
         public override string ObtenerResumen()
         {
-            return $"Esta tarea con titulo: {this.Titulo} \n Fecha de Creacion: {this.FechaCreacion} \nDias de intervalo de la tarea regular: {this.}" +
+            return $"Esta tarea con titulo: {this.Titulo} \n Fecha de Creacion: {this.FechaCreacion} \nDias de intervalo de la tarea regular:" +
                 $"Fecha Limite: {this.FechaLimite} \n Dias restantes para finalizacion: {this.DiasRestantes} Dias " +
                 $"\n Prioridad de la tarea: {this.Prioridad} \nDescripcion: {this.Descripcion}";
         }
