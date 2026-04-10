@@ -18,6 +18,8 @@ namespace Gestor_de_Tareas
         private EstadoTarea _estado;
         public EstadoTarea Estado => _estado;
         private string _motivoCancelacion;
+        public string Responsable { get; }
+        private readonly List<Tarea> _subTareas = new();
 
         protected Tarea(int id,string titulo, DateTime fechaLimite, PrioridadTarea prioridad, string descripcion)
         {
@@ -58,6 +60,22 @@ namespace Gestor_de_Tareas
             _motivoCancelacion = motivo ?? "Sin especificar";
             return true;
         }
+
+        public bool HacerTareaUrgente(string responsable)
+        {
+            if (string.IsNullOrEmpty(this.Responsable)) throw new ArgumentException("A la tarea le falta asignarle un responsable");
+            if (Estado != EstadoTarea.Completada && Estado != EstadoTarea.Cancelada)
+            {
+                this.Prioridad = PrioridadTarea.Alta;
+            }
+
+            return false;
+        }
+
+        public void AgregarSubtarea(Tarea subtarea) => _subTareas.Add(subtarea);
+
+        public int TotalSubtareas => _subTareas.Count;
+        public int SubtareasCompletadas => _subTareas.Count(subTareas => subTareas.Estado == EstadoTarea.Completada);
 
         public abstract string ObtenerResumen();
 
