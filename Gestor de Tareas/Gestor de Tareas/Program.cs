@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text.Json;
 using System.Xml.Serialization;
+using System.Linq;
 using static Gestor_de_Tareas.Tarea;
 
 /*Ejercicio 1
@@ -92,25 +93,30 @@ Console.WriteLine($" Id del libro: {libroDeserializado.Id}/n Titulo del LIbro {l
 
 
 //Ejercicio 8 y 9 que seria ignorar uno de los campos para que no salga y se meta en el JSON
-var persona = new List<Persona> { new Persona("Miguel", 28, "patatasasadas23@gmail.com"),
-new Persona("Alberto",31,"hermanomediano56@gmail.com"), new Persona("Maria",33,"lamayormola98@gmail.com")};
-string json = JsonSerializer.Serialize(persona);
-Console.WriteLine(json);
+//var persona = new List<Persona> { new Persona("Miguel", 28, "patatasasadas23@gmail.com"),
+//new Persona("Alberto",31,"hermanomediano56@gmail.com"), new Persona("Maria",33,"lamayormola98@gmail.com")};
+//string json = JsonSerializer.Serialize(persona);
+//Console.WriteLine(json);
 
-File.WriteAllText("persona.json", json);
-var opciones = new JsonSerializerOptions
-{
-    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-    PropertyNameCaseInsensitive = true
-};
+//File.WriteAllText("persona.json", json);
+//var opciones = new JsonSerializerOptions
+//{
+//    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+//    PropertyNameCaseInsensitive = true
+//};
 
-json = File.ReadAllText("persona.json");
+//json = File.ReadAllText("persona.json");
 
-var personaJson = JsonSerializer.Deserialize<List<Persona>>(json, opciones);
+//var personaJson = JsonSerializer.Deserialize<List<Persona>>(json, opciones);
 
-foreach (var personas in personaJson)
-{
-    Console.WriteLine($"Nombre: {personas.Nombre}");
-    Console.WriteLine($"Edad: {personas.Edad}");
-    Console.WriteLine($"Email: {personas.Email}");
-}
+//foreach (var personas in personaJson)
+//{
+//    Console.WriteLine($"Nombre: {personas.Nombre}");
+//    Console.WriteLine($"Edad: {personas.Edad}");
+//    Console.WriteLine($"Email: {personas.Email}");
+//}
+
+List<int> numeros = new() {3, 12, 7, 20, 5, 18, 4, 11, 30, 6, 9, 14};
+var resultado = numeros.Where(n => n % 2 == 0 && n > 10).OrderBy(n => n).ToList();
+Console.WriteLine(string.Join(", ", resultado));
+
