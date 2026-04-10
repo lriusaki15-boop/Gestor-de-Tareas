@@ -26,13 +26,13 @@ namespace Gestor_de_Tareas
             if (string.IsNullOrWhiteSpace(titulo)) throw new ArgumentException("El título es obligatorio", nameof(titulo));
             if (fechaLimite.Date < DateTime.Today) throw new ArgumentException("La fecha límite no puede ser anterior a hoy");
 
-            Id = id;
-            Titulo = titulo.Trim();
-            Descripcion = descripcion?.Trim() ?? string.Empty;
-            FechaCreacion = DateTime.Now;
-            FechaLimite = fechaLimite.Date;
-            Prioridad = prioridad;
-            _estado = EstadoTarea.Pendiente;
+            this.Id = id;
+            this.Titulo = titulo.Trim();
+            this.Descripcion = descripcion?.Trim() ?? string.Empty;
+            this.FechaCreacion = DateTime.Now;
+            this.FechaLimite  = fechaLimite.Date;
+            this.Prioridad = prioridad;
+            this._estado = EstadoTarea.Pendiente;
         }
 
         public int DiasRestantes => (FechaLimite - DateTime.Today).Days;
