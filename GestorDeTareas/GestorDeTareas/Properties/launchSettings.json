@@ -1,8 +1,12 @@
 {
   "profiles": {
-    "Gestor de Tareas": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "GestorDeTareas": {
       "commandName": "Project",
-      "workingDirectory": "C:\\Users\\Oceano\\Desktop\\Proyecto\\GestorDeTareas"
+      "workingDirectory": "C:\\Users\\anaya\\source\\repos\\GestorDeTareas\\GestorDeTareas\\GestorDeTareas"
     }
   }
 }
