@@ -1,10 +1,10 @@
-﻿using Gestor_de_Tareas;
-using static Gestor_de_Tareas.Tarea;
+﻿using GestorDeTareas;
+using static GestorDeTareas.Tarea;
 
-//var tarea = new List<Tarea> { new Tarea(1, "Tarea de prueba para ver que pasa", DateTime.MaxValue, PrioridadTarea.Baja, "Esta es la descripcion de la tarea") };
-//var tareaJson = new List<Tarea> { new TareaDto(1, "Tarea de prueba para ver que pasa", DateTime.MaxValue, PrioridadTarea.Baja, "Esta es la descripcion de la tarea") };
-//foreach (var tareaPrueba in tarea)
-    //Console.WriteLine(tareaPrueba.ObtenerResumen());
+var t1 = new List<Tarea> {new (1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2),TareaDto.PrioridadTarea.Baja, TareaDto.EstadoTarea.Pendiente),
+            new (2, "Tarea 2", "Tarea nueva que a ver que pasa 2","Matata Reyes", DateTime.Today.AddDays(2), DateTime.Today.AddDays(3), TareaDto.PrioridadTarea.Media, TareaDto.EstadoTarea.EnProgreso),
+            new (3, "Tarea 3", "Tarea nueva que a ver que pasa 3","Extin Thor", DateTime.Today.AddDays(3), DateTime.Today.AddDays(4), TareaDto.PrioridadTarea.Baja, TareaDto.EstadoTarea.Completada) };
+
 
 //Ejemplo de como introducir datos por consola
 Console.WriteLine("Introduzca un texto");

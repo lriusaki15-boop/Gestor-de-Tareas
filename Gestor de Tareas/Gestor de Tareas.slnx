@@ -1,3 +1,4 @@
 <Solution>
-  <Project Path="Gestor de Tareas/Gestor de Tareas.csproj" />
+  <Project Path="Gestor de Tareas/GestorDeTareas.csproj" />
+  <Project Path="GestorTareas.Tests/GestorTareas.Tests.csproj" Id="8c5013e1-9248-4195-8fed-02409a1053dd" />
 </Solution>

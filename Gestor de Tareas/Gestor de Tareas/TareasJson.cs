@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 
-namespace Gestor_de_Tareas
+namespace GestorDeTareas
 {
     internal class TareasJson
     {
