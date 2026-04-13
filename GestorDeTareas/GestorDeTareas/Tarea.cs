@@ -21,7 +21,7 @@ namespace GestorDeTareas
         public string Responsable { get; }
         private readonly List<Tarea> _subTareas = new();
 
-        protected Tarea(int id,string titulo, string descripcion,string responsable, DateTime fechaLimite, PrioridadTarea prioridad)
+        protected Tarea(int id,string titulo, string descripcion,string responsable, DateTime fechaLimite, DateTime FechaCreacion, PrioridadTarea prioridad, EstadoTarea estado)
         {
             if (string.IsNullOrWhiteSpace(titulo)) throw new ArgumentException("El título es obligatorio", nameof(titulo));
             if (fechaLimite.Date < DateTime.Today) throw new ArgumentException("La fecha límite no puede ser anterior a hoy");

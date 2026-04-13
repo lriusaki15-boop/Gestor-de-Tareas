@@ -1,8 +1,0 @@
-<Solution>
-  <Project Path="Gestor de Tareas/GestorDeTareas.csproj">
-    <Build Solution="Debug|*" Project="false" />
-  </Project>
-  <Project Path="GestorTareas.Tests/GestorTareas.Tests.csproj" Id="8c5013e1-9248-4195-8fed-02409a1053dd">
-    <Build Solution="Debug|*" Project="false" />
-  </Project>
-</Solution>
