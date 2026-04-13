@@ -2,10 +2,18 @@
 using GestorDeTareas;
 using static GestorDeTareas.Tarea;
 
-var t1 = new List<Tarea> {new TareaAction(1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2),PrioridadTarea.Baja, EstadoTarea.Pendiente),
-           new TareaAction(2, "Tarea 2", "Tarea nueva que a ver que pasa 2","Matata Reyes", DateTime.Today.AddDays(2), DateTime.Today.AddDays(3), PrioridadTarea.Media, EstadoTarea.EnProgreso),
-           new TareaAction(3, "Tarea 3", "Tarea nueva que a ver que pasa 3","Extin Thor", DateTime.Today.AddDays(3), DateTime.Today.AddDays(4), PrioridadTarea.Baja, EstadoTarea.Completada) };
+var t1 = new List<Tarea> {new TareaAction(1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2),null, PrioridadTarea.Baja, EstadoTarea.Pendiente, null, null),
+           new TareaAction(1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2),null, PrioridadTarea.Baja, EstadoTarea.Pendiente, null, null),
+           new TareaAction(1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2),null, PrioridadTarea.Baja, EstadoTarea.Pendiente, null, null) };
 
+foreach(var t2 in t1)
+{
+    Console.WriteLine(t2.Estado);
+    if (t2.Iniciar())
+    {
+        Console.WriteLine(t2.Estado);
+    }
+}
 
 //Ejemplo de como introducir datos por consola
 Console.WriteLine("Introduzca un texto");

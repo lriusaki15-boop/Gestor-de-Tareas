@@ -16,12 +16,16 @@ namespace GestorDeTareas
         public DateTime FechaFinTarea { get; }
         public PrioridadTarea Prioridad { get; set; }
         private EstadoTarea _estado;
+
+        public string? MotivoCancelacion { get; }
+        public List<TareaDto>? SubTareas { get; }
+
         public EstadoTarea Estado => _estado;
         private string _motivoCancelacion;
         public string Responsable { get; }
         private readonly List<Tarea> _subTareas = new();
 
-        protected Tarea(int id,string titulo, string descripcion,string responsable, DateTime fechaLimite, DateTime FechaCreacion, PrioridadTarea prioridad, EstadoTarea estado)
+        protected Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime fechaLimite, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion, List<TareaDto>? subTareas)
         {
             if (string.IsNullOrWhiteSpace(titulo)) throw new ArgumentException("El título es obligatorio", nameof(titulo));
             if (fechaLimite.Date < DateTime.Today) throw new ArgumentException("La fecha límite no puede ser anterior a hoy");
@@ -32,8 +36,11 @@ namespace GestorDeTareas
             this.Responsable = responsable;
             this.FechaCreacion = DateTime.Now;
             this.FechaLimite  = fechaLimite.Date;
+            this.FechaFinTarea = (DateTime)fechaFinTarea;
             this.Prioridad = prioridad;
             this._estado = EstadoTarea.Pendiente;
+            this.MotivoCancelacion = motivacionCancelacion;
+            this.SubTareas = subTareas;
         }
 
         public int DiasRestantes => (FechaLimite - DateTime.Today).Days;
