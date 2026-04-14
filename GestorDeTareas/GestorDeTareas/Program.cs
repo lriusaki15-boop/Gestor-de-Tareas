@@ -2,9 +2,9 @@
 using GestorDeTareas;
 using static GestorDeTareas.Tarea;
 
-var t1 = new List<Tarea> {new TareaAction(1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2),null, PrioridadTarea.Baja, EstadoTarea.Pendiente, null, null),
-           new TareaAction(1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2),null, PrioridadTarea.Baja, EstadoTarea.Pendiente, null, null),
-           new TareaAction(1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2),null, PrioridadTarea.Baja, EstadoTarea.Pendiente, null, null) };
+var t1 = new List<Tarea> {new TareaAction(1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2),null, PrioridadTarea.Baja, EstadoTarea.Pendiente, null),
+           new TareaAction(1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2),null, PrioridadTarea.Baja, EstadoTarea.Pendiente, null),
+           new TareaAction(1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2),null, PrioridadTarea.Baja, EstadoTarea.Pendiente, null) };
 
 foreach(var t2 in t1)
 {

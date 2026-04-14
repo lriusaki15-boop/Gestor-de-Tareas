@@ -7,9 +7,16 @@ namespace Gestor_de_Tareas
 {
     internal class TareaAction : Tarea
     {
-        public TareaAction(int id, string titulo, string descripcion, string responsable, DateTime fechaCreacion, DateTime fechaLimite, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion, List<Tarea>? subTareas) : base(id, titulo, descripcion, responsable,fechaCreacion, fechaLimite, prioridad, estado, motivacionCancelacion, subTareas)
+        private readonly List<Tarea> _subTareas = new();
+        public TareaAction(int id, string titulo, string descripcion, string responsable, DateTime fechaCreacion, DateTime fechaLimite, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion) : base(id, titulo, descripcion, responsable, fechaCreacion, fechaLimite, fechaFinTarea, prioridad, estado, motivacionCancelacion)
         {
+            
         }
+
+        public void AgregarSubtarea(Tarea subtarea) => _subTareas.Add(subtarea);
+
+        public int TotalSubtareas => _subTareas.Count;
+        public int SubtareasCompletadas => _subTareas.Count(subTareas => subTareas.Estado == EstadoTarea.Completada);
 
         public override string ObtenerResumen()
         {
