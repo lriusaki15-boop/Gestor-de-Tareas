@@ -8,9 +8,9 @@ namespace Gestor_de_Tareas
     internal class TareaAction : Tarea
     {
         private readonly List<Tarea> _subTareas = new();
-        public TareaAction(int id, string titulo, string descripcion, string responsable, DateTime fechaCreacion, DateTime fechaLimite, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion) : base(id, titulo, descripcion, responsable, fechaCreacion, fechaLimite, fechaFinTarea, prioridad, estado, motivacionCancelacion)
+
+        public TareaAction(int id, string titulo, string descripcion, string responsable, DateTime FechaCreacion, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion) : base(id, titulo, descripcion, responsable, FechaCreacion, prioridad, estado, motivacionCancelacion)
         {
-            
         }
 
         public void AgregarSubtarea(Tarea subtarea) => _subTareas.Add(subtarea);

@@ -11,40 +11,33 @@ namespace GestorDeTareas
         public int Id { get; }
         public string Titulo { get; }
         public string Descripcion { get; }
+        public string Responsable { get; }
         public DateTime FechaCreacion { get; }
-        public DateTime FechaLimite { get; }
-        public DateTime? FechaFinTarea { get; }
+        public DateTime? FechaFinTarea { get; set; }
         public PrioridadTarea Prioridad { get; set; }
         private EstadoTarea _estado;
-
         public string? MotivoCancelacion { get; }
         public List<TareaDto>? SubTareas { get; }
-
         public EstadoTarea Estado => _estado;
         private string _motivoCancelacion;
-        public string Responsable { get; }
         
 
-        protected Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime fechaLimite, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion)
+        protected Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion)
         {
             if (string.IsNullOrWhiteSpace(titulo)) throw new ArgumentException("El título es obligatorio", nameof(titulo));
-            if (fechaLimite.Date < DateTime.Today) throw new ArgumentException("La fecha límite no puede ser anterior a hoy");
+            //Añadir comprobacion de que la fecha fin no sea menor que la fecha de creacion o igual y que podamos controlar si esta finalizada
+            //entonces con eso podremos saber si tiene fecha fin o no
 
             this.Id = id;
             this.Titulo = titulo.Trim();
             this.Descripcion = descripcion?.Trim() ?? string.Empty;
             this.Responsable = responsable;
             this.FechaCreacion = DateTime.Now;
-            this.FechaLimite  = fechaLimite.Date;
-            this.FechaFinTarea = fechaFinTarea;
+            this.FechaFinTarea = null;
             this.Prioridad = prioridad;
             this._estado = EstadoTarea.Pendiente;
-            this.MotivoCancelacion = motivacionCancelacion;
+            this.MotivoCancelacion = motivacionCancelacion ?? string.Empty;
         }
-
-        public int DiasRestantes => (FechaLimite - DateTime.Today).Days;
-
-        public bool EstaVencida => _estado != EstadoTarea.Completada && _estado != EstadoTarea.Cancelada && DateTime.Today > FechaLimite;
 
         public bool Iniciar()
         {
@@ -57,6 +50,7 @@ namespace GestorDeTareas
         {
             if (_estado == EstadoTarea.Completada || _estado == EstadoTarea.Cancelada) return false;
             _estado = EstadoTarea.Completada;
+            FechaFinTarea = DateTime.Now;
             return true;
         }
 
@@ -83,7 +77,7 @@ namespace GestorDeTareas
 
         public override string ToString()
         {
-            return $"Tarea {Id.ToString()[..8]} | {Titulo} | " + $"Limite: {FechaLimite:dd/MM/yy} | " + $"Prioridad: {Prioridad} | {_estado}" + (EstaVencida ? " [VENCIDA]" : "");
+            return $"Tarea {Id.ToString()[..8]} | {Titulo} | | Prioridad: {Prioridad} | {_estado}";
         }
     }
 }
