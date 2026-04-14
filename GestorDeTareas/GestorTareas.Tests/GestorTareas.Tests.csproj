@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gestor de Tareas\GestorDeTareas.csproj" />
+    <ProjectReference Include="..\GestorDeTareas\GestorDeTareas.csproj" />
   </ItemGroup>
 
   <ItemGroup>
