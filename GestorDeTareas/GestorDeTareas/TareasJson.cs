@@ -14,15 +14,14 @@ namespace GestorDeTareas
             string json = JsonSerializer.Serialize(tareas);
             File.WriteAllText("Tareas.json", json);
         }
-         public static List<TareaAction> RecuperarDatos()
+         public static List<Object> RecuperarDatos()
         {
             var opciones = new JsonSerializerOptions
             {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 PropertyNameCaseInsensitive = true
             };
             string json = File.ReadAllText(ruta);
-            return JsonSerializer.Deserialize<List<TareaAction>>(json, opciones) ?? new();
+            return JsonSerializer.Deserialize<List<Object>>(json, opciones) ?? new();
         }
     }
 }

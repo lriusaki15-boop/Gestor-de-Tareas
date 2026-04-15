@@ -22,7 +22,7 @@ namespace GestorDeTareas
         private string _motivoCancelacion;
         
 
-        protected Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion)
+        protected Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime? FechaFinTarea, PrioridadTarea prioridad, string? motivacionCancelacion, EstadoTarea estado)
         {
             if (string.IsNullOrWhiteSpace(titulo)) throw new ArgumentException("El título es obligatorio", nameof(titulo));
             //Añadir comprobacion de que la fecha fin no sea menor que la fecha de creacion o igual y que podamos controlar si esta finalizada
