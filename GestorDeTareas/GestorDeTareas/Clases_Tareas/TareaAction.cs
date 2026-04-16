@@ -1,14 +1,15 @@
-﻿using GestorDeTareas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Gestor_de_Tareas
+namespace GestorDeTareas.Clases_Tareas
 {
     internal class TareaAction : Tarea
     {
         private readonly List<Tarea>? _subTareas = new();
+
+        [JsonConstructor]
         public TareaAction(int id,string titulo,string descripcion,string responsable,DateTime fechaCreacion,DateTime? fechaFinTarea,PrioridadTarea prioridad,string? motivacionCancelacion,List<Tarea> _subTareas, EstadoTarea estado) : base(id,titulo,descripcion,responsable,fechaCreacion,fechaFinTarea,prioridad,motivacionCancelacion, estado)
         {
         }

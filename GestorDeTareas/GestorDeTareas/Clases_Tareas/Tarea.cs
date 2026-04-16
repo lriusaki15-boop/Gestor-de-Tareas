@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GestorDeTareas
+namespace GestorDeTareas.Clases_Tareas
 {
     internal abstract class Tarea
     {
@@ -17,7 +17,6 @@ namespace GestorDeTareas
         public PrioridadTarea Prioridad { get; set; }
         private EstadoTarea _estado;
         public string? MotivoCancelacion { get; }
-        public List<TareaDto>? SubTareas { get; }
         public EstadoTarea Estado => _estado;
         private string _motivoCancelacion;
         
@@ -74,10 +73,5 @@ namespace GestorDeTareas
         }
 
         public abstract string ObtenerResumen();
-
-        public override string ToString()
-        {
-            return $"Tarea {Id.ToString()[..8]} | {Titulo} | | Prioridad: {Prioridad} | {_estado}";
-        }
     }
 }
