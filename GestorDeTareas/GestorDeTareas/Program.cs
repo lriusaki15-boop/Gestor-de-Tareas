@@ -1,6 +1,7 @@
 ﻿using GestorDeTareas;
 using GestorDeTareas.Clases_Tareas;
 using static GestorDeTareas.Clases_Tareas.Tarea;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 //if (TareasJson.RecuperarDatos().Count == 0)
 //{
@@ -38,13 +39,40 @@ do
     switch (opcion)
     {
         case "1":
-            string opcionDatoLista;
+            string opcionDatoLista,opcionInicioTarea;
             Console.WriteLine("Has seleccionado ver la lista de Tareas \n\n ----------LISTADO TAREAS----------");
             listaTareas.ForEach(lista => Console.WriteLine("\n*Id:" + lista.Id + "\n-Titulo:"+lista.Titulo+"\n -Descripcion:"+lista.Descripcion));
             Console.Write("\n\nPara ver en detalle una tarea escriba su Id:");
             opcionDatoLista = Console.ReadLine();
+            var datosDeBusqueda = listaTareas.Where(liasta => liasta.Id == int.Parse(opcionDatoLista));
             Console.Clear();
-            Console.WriteLine(listaTareas.Where(liasta => opcionDatoLista.Equals(liasta.Id)));
+            Console.WriteLine("--------Resumen Tarea--------");
+            foreach (var dato in datosDeBusqueda)
+            {
+                Console.WriteLine("*Id de tarea:"+dato.Id+"\n-Titulo de la tarea:"+dato.Titulo+"\n-Descripcion:"+dato.Descripcion+
+                    "\n-Responsable de la tarea:"+dato.Responsable+"\n-Fecha de Creacion de la tarea:"+dato.FechaCreacion+
+                    "\n-Fecha de finalizacion de la tarea:"+dato.FechaFinTarea+"\n-Prioridad de la tarea:"+dato.Prioridad+
+                    "\n-Estado de la tarea:"+dato.Estado+ "\n------Fin de los datos de la tarea------");
+                if (dato.Estado == EstadoTarea.Pendiente)
+                {
+                    Console.WriteLine("¿Quieres iniciar la tarea? S/N");
+                }
+            }
+            //opcionInicioTarea = Console.ReadLine();
+            //if (opcionInicioTarea.ToLower().Equals("S"))
+            //{
+            //    if ()
+            //    {
+            //        listaTareas.Remove(datosDeBusqueda);
+            //        listaTareas.Add(dato);
+            //        Console.WriteLine("Tarea Iniciada");
+            //    }
+            //}
+            //else if (opcionInicioTarea.ToLower().Equals("N"))
+            //{
+            //    Console.WriteLine("Pulsa cualquier tecla para volver al menu inicial.....");
+            //    Console.ReadKey();
+            //}
             Console.ReadKey();
             break;
         case "2":
