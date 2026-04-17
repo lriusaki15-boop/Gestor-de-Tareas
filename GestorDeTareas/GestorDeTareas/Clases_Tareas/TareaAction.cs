@@ -10,7 +10,8 @@ namespace GestorDeTareas.Clases_Tareas
         private readonly List<Tarea>? _subTareas = new();
 
         [JsonConstructor]
-        public TareaAction(int id,string titulo,string descripcion,string responsable,DateTime fechaCreacion,DateTime? fechaFinTarea,PrioridadTarea prioridad,string? motivacionCancelacion,List<Tarea> _subTareas, EstadoTarea estado) : base(id,titulo,descripcion,responsable,fechaCreacion,fechaFinTarea,prioridad,motivacionCancelacion, estado)
+        public TareaAction(int id,string titulo,string descripcion,string responsable,DateTime fechaCreacion,DateTime? fechaFinTarea,PrioridadTarea prioridad,string? motivacionCancelacion,List<Tarea> _subTareas, EstadoTarea estado) 
+            : base(id,titulo,descripcion,responsable,fechaCreacion,fechaFinTarea,prioridad,motivacionCancelacion, estado)
         {
         }
 

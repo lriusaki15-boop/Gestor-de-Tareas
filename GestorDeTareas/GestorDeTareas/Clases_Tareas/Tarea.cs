@@ -40,25 +40,39 @@ namespace GestorDeTareas.Clases_Tareas
 
         public bool Iniciar()
         {
-            if (_estado != EstadoTarea.Pendiente) return false;
-            _estado = EstadoTarea.EnProgreso;
-            return true;
+            if (_estado != EstadoTarea.Pendiente)
+            {
+                _estado = EstadoTarea.EnProgreso;
+                return true;
+            }
+            return false;
         }
 
         public bool Completar()
         {
-            if (_estado == EstadoTarea.Completada || _estado == EstadoTarea.Cancelada) return false;
-            _estado = EstadoTarea.Completada;
-            FechaFinTarea = DateTime.Now;
-            return true;
+            if (_estado != EstadoTarea.Completada || _estado != EstadoTarea.Cancelada)
+            {
+                _estado = EstadoTarea.Completada;
+                FechaFinTarea = DateTime.Now;
+                return true;
+            }
+            return false;
         }
 
         public bool Cancelar(string motivo)
         {
-            if (_estado == EstadoTarea.Cancelada) return false;
-            _estado = EstadoTarea.Cancelada;
-            _motivoCancelacion = motivo ?? "Sin especificar";
-            return true;
+            if (_estado != EstadoTarea.Cancelada)
+            {
+                _estado = EstadoTarea.Cancelada;
+                _motivoCancelacion = motivo ?? "Sin especificar";
+                return true;
+            }
+            return false;
+        }
+
+        public string ObtenerMotivoCancelacion()
+        {
+            return _motivoCancelacion;
         }
 
         public bool HacerTareaUrgente(string responsable)

@@ -6,7 +6,8 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 //if (TareasJson.RecuperarDatos().Count == 0)
 //{
 
-var listaTareas = new List<Tarea> {new TareaAction (1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), null, PrioridadTarea.Media, null, null, EstadoTarea.Pendiente),
+var listaTareas = new List<Tarea> {
+               new TareaAction (1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), null, PrioridadTarea.Media, null, null, EstadoTarea.Pendiente),
                new TareaAction (2, "Tarea 2","Tarea nueva que a ver que pasa 2 lo serializa bien","Riki", DateTime.Today.AddDays(2), null, PrioridadTarea.Alta, null,null,EstadoTarea.EnProgreso),
                new TareaAction (3, "Tarea 3","Tarea nueva que a ver que pasa 3 cambio","Morty Smithz", DateTime.Today.AddDays(3), null, PrioridadTarea.Baja, null,null,EstadoTarea.Completada),
                new TareaAction (4, "Tarea 4","Tarea nueva que a ver que pasa 4 cambio","Morty Sanchez", DateTime.Today.AddDays(4), null, PrioridadTarea.Alta, null,null,EstadoTarea.Pendiente),
@@ -30,7 +31,7 @@ do
     Console.WriteLine("--- MENÚ DE OPCIONES ---");
     Console.WriteLine("1. Ver Listado de Tareas");
     Console.WriteLine("2. Crear una tarea");
-    Console.WriteLine("3. Eliminar una Tarea");
+    Console.WriteLine("3. Cancelar una Tarea");
     Console.WriteLine("4. Salir");
     Console.Write("Seleccione una opción: ");
 
@@ -40,47 +41,158 @@ do
     {
         case "1":
             string opcionDatoLista,opcionInicioTarea;
+            bool opcionTareaInicio = false;
             Console.WriteLine("Has seleccionado ver la lista de Tareas \n\n ----------LISTADO TAREAS----------");
             listaTareas.ForEach(lista => Console.WriteLine("\n*Id:" + lista.Id + "\n-Titulo:"+lista.Titulo+"\n -Descripcion:"+lista.Descripcion));
             Console.Write("\n\nPara ver en detalle una tarea escriba su Id:");
             opcionDatoLista = Console.ReadLine();
-            var datosDeBusqueda = listaTareas.Where(liasta => liasta.Id == int.Parse(opcionDatoLista));
-            Console.Clear();
-            Console.WriteLine("--------Resumen Tarea--------");
-            foreach (var dato in datosDeBusqueda)
+            try
             {
-                Console.WriteLine("*Id de tarea:"+dato.Id+"\n-Titulo de la tarea:"+dato.Titulo+"\n-Descripcion:"+dato.Descripcion+
-                    "\n-Responsable de la tarea:"+dato.Responsable+"\n-Fecha de Creacion de la tarea:"+dato.FechaCreacion+
-                    "\n-Fecha de finalizacion de la tarea:"+dato.FechaFinTarea+"\n-Prioridad de la tarea:"+dato.Prioridad+
-                    "\n-Estado de la tarea:"+dato.Estado+ "\n------Fin de los datos de la tarea------");
-                if (dato.Estado == EstadoTarea.Pendiente)
+                var datosDeBusqueda = listaTareas.Where(tarea => tarea.Id == int.Parse(opcionDatoLista));
+
+                Console.Clear();
+                if (datosDeBusqueda.Count() == 0)
                 {
-                    Console.WriteLine("¿Quieres iniciar la tarea? S/N");
+                    Console.WriteLine("No existe ese ID tarea\nPulsa cualquier tecla para volver al menu inicial.....");
+                    Console.ReadKey();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("--------Resumen Tarea--------");
+                    foreach (var dato in datosDeBusqueda)
+                    {
+                        Console.WriteLine("*Id de tarea:" + dato.Id + "\n-Titulo de la tarea:" + dato.Titulo + "\n-Descripcion:" + dato.Descripcion +
+                            "\n-Responsable de la tarea:" + dato.Responsable + "\n-Fecha de Creacion de la tarea:" + dato.FechaCreacion +
+                            "\n-Fecha de finalizacion de la tarea:" + dato.FechaFinTarea + "\n-Prioridad de la tarea:" + dato.Prioridad +
+                            "\n-Estado de la tarea:" + dato.Estado + "\n-Motivo de la Cancelacion:"+dato.ObtenerMotivoCancelacion()
+                            +"\n------Fin de los datos de la tarea------");
+                        if (dato.Estado == EstadoTarea.Pendiente)
+                        {
+                            Console.WriteLine("¿Quieres iniciar la tarea? S/N");
+                            opcionTareaInicio = true;
+                        }
+                    }
+                }
+                if (opcionTareaInicio)
+                {
+                    opcionInicioTarea = Console.ReadLine();
+                    foreach (var dato in listaTareas)
+                    {
+                        if (opcionInicioTarea.ToUpper().Equals("S"))
+                        {
+                            if (dato.Id == int.Parse(opcionDatoLista))
+                            {
+                                dato.Iniciar();
+                                Console.WriteLine("Tarea Iniciada");
+                                Thread.Sleep(3000);
+                                Console.WriteLine("Volviendo al menu inicial....");
+                                Thread.Sleep(3000);
+                                break;
+                            }
+                        }
+                        else if (opcionInicioTarea.ToUpper().Equals("N"))
+                        {
+                            Console.WriteLine("Pulsa cualquier tecla para volver al menu inicial.....");
+                            Console.ReadKey();
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Pulsa cualquier tecla para volver al menu inicial.....");
+                    Console.ReadKey();
+                    break;
                 }
             }
-            //opcionInicioTarea = Console.ReadLine();
-            //if (opcionInicioTarea.ToLower().Equals("S"))
-            //{
-            //    if ()
-            //    {
-            //        listaTareas.Remove(datosDeBusqueda);
-            //        listaTareas.Add(dato);
-            //        Console.WriteLine("Tarea Iniciada");
-            //    }
-            //}
-            //else if (opcionInicioTarea.ToLower().Equals("N"))
-            //{
-            //    Console.WriteLine("Pulsa cualquier tecla para volver al menu inicial.....");
-            //    Console.ReadKey();
-            //}
-            Console.ReadKey();
+            catch (System.FormatException)
+            {
+                Console.WriteLine("Dato introducido incorrecto volviendo al menu principal.....");
+                Thread.Sleep(3000);
+                break;
+            }
             break;
         case "2":
             Console.WriteLine("Has seleccionado Crear una tarea Nueva");
             Console.ReadKey();
             break;
         case "3":
-            Console.WriteLine("Has seleccionado Eliminar una Tarea");
+            Console.WriteLine("Has seleccionado Cancelar una Tarea");
+            string opcionCancelarDatoLista, opcionCancelarTarea, motivoCancelacion;
+            bool opcionTareaCancelar = false;
+            Console.WriteLine("Has seleccionado ver la lista de Tareas \n\n ----------LISTADO TAREAS----------");
+            listaTareas.ForEach(lista => Console.WriteLine("\n*Id:" + lista.Id + "\n-Titulo:" + lista.Titulo + "\n -Descripcion:" + lista.Descripcion));
+            Console.Write("\n\nPara ver en detalle una tarea escriba su Id:");
+            opcionCancelarDatoLista = Console.ReadLine();
+            try
+            {
+                var datosDeBusqueda = listaTareas.Where(tarea => tarea.Id == int.Parse(opcionCancelarDatoLista));
+
+                Console.Clear();
+                if (datosDeBusqueda.Count() == 0)
+                {
+                    Console.WriteLine("No existe ese ID tarea\nPulsa cualquier tecla para volver al menu inicial.....");
+                    Console.ReadKey();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("--------Resumen Tarea--------");
+                    foreach (var dato in datosDeBusqueda)
+                    {
+                        Console.WriteLine("*Id de tarea:" + dato.Id + "\n-Titulo de la tarea:" + dato.Titulo + "\n-Descripcion:" + dato.Descripcion +
+                            "\n-Responsable de la tarea:" + dato.Responsable + "\n-Fecha de Creacion de la tarea:" + dato.FechaCreacion +
+                            "\n-Fecha de finalizacion de la tarea:" + dato.FechaFinTarea + "\n-Prioridad de la tarea:" + dato.Prioridad +
+                            "\n-Estado de la tarea:" + dato.Estado + "\n-Motivo de la Cancelacion:" + dato.ObtenerMotivoCancelacion()
+                            + "\n------Fin de los datos de la tarea------");
+                        if (dato.Estado != EstadoTarea.Cancelada && dato.Estado != EstadoTarea.Completada)
+                        {
+                            Console.WriteLine("¿Quieres Cancelar la tarea? S/N");
+                            opcionTareaCancelar = true;
+                        }
+                    }
+                }
+                if (opcionTareaCancelar)
+                {
+                    opcionCancelarTarea = Console.ReadLine();
+                    Console.WriteLine("Escriba el motivo de la cancelacion de la tarea:");
+                    motivoCancelacion = Console.ReadLine();
+                    foreach (var dato in listaTareas)
+                    {
+                        if (opcionCancelarTarea.ToUpper().Equals("S"))
+                        {
+                            if (dato.Id == int.Parse(opcionCancelarDatoLista))
+                            {
+                                dato.Cancelar(motivoCancelacion);
+                                Console.WriteLine("Tarea Cancelada");
+                                Thread.Sleep(3000);
+                                Console.WriteLine("Volviendo al menu inicial....");
+                                Thread.Sleep(3000);
+                                break;
+                            }
+                        }
+                        else if (opcionCancelarTarea.ToUpper().Equals("N"))
+                        {
+                            Console.WriteLine("Volviendo al menu inicial....");
+                            Thread.Sleep(3000);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Pulsa cualquier tecla para volver al menu inicial.....");
+                    Console.ReadKey();
+                    break;
+                }
+            }
+            catch (System.FormatException)
+            {
+                Console.WriteLine("Dato introducido incorrecto volviendo al menu principal.....");
+                Thread.Sleep(3000);
+                break;
+            }
+            break;
             break;
         case "4":
             salir = true;
