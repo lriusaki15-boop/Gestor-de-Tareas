@@ -1,25 +1,27 @@
 ﻿using GestorDeTareas;
 using GestorDeTareas.Clases_Tareas;
+using GestorDeTareas.Tareas_Json;
 using static GestorDeTareas.Clases_Tareas.Tarea;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 //if (TareasJson.RecuperarDatos().Count == 0)
 //{
 
-var listaTareas = new List<Tarea> {
-               new TareaAction (1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), null, PrioridadTarea.Media, null, null, EstadoTarea.Pendiente),
-               new TareaAction (2, "Tarea 2","Tarea nueva que a ver que pasa 2 lo serializa bien","Riki", DateTime.Today.AddDays(2), null, PrioridadTarea.Alta, null,null,EstadoTarea.EnProgreso),
-               new TareaAction (3, "Tarea 3","Tarea nueva que a ver que pasa 3 cambio","Morty Smithz", DateTime.Today.AddDays(3), null, PrioridadTarea.Baja, null,null,EstadoTarea.Completada),
-               new TareaAction (4, "Tarea 4","Tarea nueva que a ver que pasa 4 cambio","Morty Sanchez", DateTime.Today.AddDays(4), null, PrioridadTarea.Alta, null,null,EstadoTarea.Pendiente),
-               new TareaAction (5, "Tarea 5","Tarea nueva que es la ultima de las que se añaden para crear el JSON de memoria de datos","Miguel Cervera", DateTime.Today.AddDays(5), null, PrioridadTarea.Baja, null, null,EstadoTarea.Completada)};
+var listaTareas = new List<TareaAction> {
+               new TareaAction (1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), null, PrioridadTarea.Media, null, null, EstadoTarea.Pendiente,0,0),
+               new TareaAction (2, "Tarea 2","Tarea nueva que a ver que pasa 2 lo serializa bien","Riki", DateTime.Today.AddDays(2), null, PrioridadTarea.Alta, null,null,EstadoTarea.EnProgreso,0,0),
+               new TareaAction (3, "Tarea 3","Tarea nueva que a ver que pasa 3 cambio","Morty Smithz", DateTime.Today.AddDays(3), null, PrioridadTarea.Baja, null,null,EstadoTarea.Completada,0,0),
+               new TareaAction (4, "Tarea 4","Tarea nueva que a ver que pasa 4 cambio","Morty Sanchez", DateTime.Today.AddDays(4), null, PrioridadTarea.Alta, null,null,EstadoTarea.Pendiente,0,0),
+               new TareaAction (5, "Tarea 5","Tarea nueva que es la ultima de las que se añaden para crear el JSON de memoria de datos","Miguel Cervera", DateTime.Today.AddDays(5), null, PrioridadTarea.Baja, null, null,EstadoTarea.Completada,0,0)};
 
-    //TareasJson.GuardarDatosJson(t1);
+//TareasJson.GuardarDatosJson(t1);
 //}
 
-//var listaTareasJson = TareasJson.RecuperarDatos();
+TareasJson.GuardarDatosJson(listaTareas);
+var listaTareasJson = TareasJson.RecuperarDatos();
 
 
-//listaTareasJson.ForEach(Console.WriteLine);
+listaTareasJson.ForEach(Console.WriteLine);
 //Menu por consola provisional hasta que creemos el FRONT
 
 string opcion;

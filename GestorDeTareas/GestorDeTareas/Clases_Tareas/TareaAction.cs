@@ -9,9 +9,12 @@ namespace GestorDeTareas.Clases_Tareas
     {
         private readonly List<Tarea>? _subTareas = new();
 
+
+        public TareaAction(){}
+
         [JsonConstructor]
-        public TareaAction(int id,string titulo,string descripcion,string responsable,DateTime fechaCreacion,DateTime? fechaFinTarea,PrioridadTarea prioridad,string? motivacionCancelacion,List<Tarea> _subTareas, EstadoTarea estado) 
-            : base(id,titulo,descripcion,responsable,fechaCreacion,fechaFinTarea,prioridad,motivacionCancelacion, estado)
+        public TareaAction(int Id,string Titulo,string Descripcion,string Responsable,DateTime FechaCreacion,DateTime? FechaFinTarea,PrioridadTarea Prioridad,string? MotivacionCancelacion,List<Tarea> _subTareas, EstadoTarea Estado, int TotalSubtareas, int SubtareasCompletadas) 
+            : base(Id,Titulo,Descripcion,Responsable,FechaCreacion,FechaFinTarea,Prioridad,MotivacionCancelacion, Estado)
         {
         }
 
@@ -22,7 +25,8 @@ namespace GestorDeTareas.Clases_Tareas
 
         public override string ObtenerResumen()
         {
-            throw new NotImplementedException();
+            return "Resmune de tarea con los datos:\n" + this.Id + "\nTitulo:" + this.Titulo
+                + "\nDescripcion:" + this.Descripcion + "\nEstado de la tarea:" + this.Estado;
         }
     }
 }

@@ -35,14 +35,5 @@ namespace GestorDeTareas.Tareas_Json
             this.SubTareas = subTareas;
             this.Estado = estado;
         }
-
-        //public bool Guardar(List<TareaDto> tareaNueva)
-        //{
-        //    string json = JsonSerializer.Serialize(tareaNueva);
-        //    Console.WriteLine(json);
-
-        //    File.WriteAllText("Tarea.json", json);
-        //    return true;
-        //}
     }
 }

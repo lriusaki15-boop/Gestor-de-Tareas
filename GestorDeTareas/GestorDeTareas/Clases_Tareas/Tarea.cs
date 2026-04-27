@@ -13,13 +13,17 @@ namespace GestorDeTareas.Clases_Tareas
         public string Descripcion { get; }
         public string Responsable { get; }
         public DateTime FechaCreacion { get; }
-        public DateTime? FechaFinTarea { get; set; }
-        public PrioridadTarea Prioridad { get; set; }
-        private EstadoTarea _estado;
+        public DateTime? FechaFinTarea { get; private set; }
+        public PrioridadTarea Prioridad { get; private set; }
+        
         public string? MotivoCancelacion { get; }
-        public EstadoTarea Estado => _estado;
+        public EstadoTarea Estado { get; private set; }
         private string _motivoCancelacion;
         
+        public Tarea()
+        {
+
+        }
 
         protected Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime? FechaFinTarea, PrioridadTarea prioridad, string? motivacionCancelacion, EstadoTarea estado)
         {
@@ -34,15 +38,15 @@ namespace GestorDeTareas.Clases_Tareas
             this.FechaCreacion = DateTime.Now;
             this.FechaFinTarea = null;
             this.Prioridad = prioridad;
-            this._estado = EstadoTarea.Pendiente;
+            this.Estado = EstadoTarea.Pendiente;
             this.MotivoCancelacion = motivacionCancelacion ?? string.Empty;
         }
 
         public bool Iniciar()
         {
-            if (_estado != EstadoTarea.Pendiente)
+            if (Estado == EstadoTarea.Pendiente)
             {
-                _estado = EstadoTarea.EnProgreso;
+                Estado = EstadoTarea.EnProgreso;
                 return true;
             }
             return false;
@@ -50,9 +54,9 @@ namespace GestorDeTareas.Clases_Tareas
 
         public bool Completar()
         {
-            if (_estado != EstadoTarea.Completada || _estado != EstadoTarea.Cancelada)
+            if (Estado != EstadoTarea.Completada || Estado != EstadoTarea.Cancelada)
             {
-                _estado = EstadoTarea.Completada;
+                Estado = EstadoTarea.Completada;
                 FechaFinTarea = DateTime.Now;
                 return true;
             }
@@ -61,9 +65,9 @@ namespace GestorDeTareas.Clases_Tareas
 
         public bool Cancelar(string motivo)
         {
-            if (_estado != EstadoTarea.Cancelada)
+            if (Estado != EstadoTarea.Cancelada)
             {
-                _estado = EstadoTarea.Cancelada;
+                Estado = EstadoTarea.Cancelada;
                 _motivoCancelacion = motivo ?? "Sin especificar";
                 return true;
             }

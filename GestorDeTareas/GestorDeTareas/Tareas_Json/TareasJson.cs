@@ -9,7 +9,7 @@ namespace GestorDeTareas.Tareas_Json
     internal class TareasJson
     {
         const string ruta = "Tareas.json";
-        public static void GuardarDatosJson(List<Tarea> tareas)
+        public static void GuardarDatosJson(List<TareaAction> tareas)
         {
             string json = JsonSerializer.Serialize(tareas);
             File.WriteAllText("Tareas.json", json);
