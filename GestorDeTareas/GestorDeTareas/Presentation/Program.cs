@@ -1,8 +1,9 @@
 ﻿using GestorDeTareas;
-using GestorDeTareas.Clases_Tareas;
 using GestorDeTareas.Tareas_Json;
-using static GestorDeTareas.Clases_Tareas.Tarea;
+using static GestorDeTareas.Domine.Entities.Tarea;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static GestorDeTareas.Domine.Enums.Enumerados;
+using GestorDeTareas.Domine.Entities;
 
 //if (TareasJson.RecuperarDatos().Count == 0)
 //{
@@ -194,7 +195,6 @@ do
                 Thread.Sleep(3000);
                 break;
             }
-            break;
             break;
         case "4":
             salir = true;

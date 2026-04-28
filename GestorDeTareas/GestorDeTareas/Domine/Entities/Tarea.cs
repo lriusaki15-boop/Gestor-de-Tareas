@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static GestorDeTareas.Domine.Enums.Enumerados;
 
-namespace GestorDeTareas.Clases_Tareas
+namespace GestorDeTareas.Domine.Entities
 {
     internal abstract class Tarea
     {
-        public enum PrioridadTarea { Baja, Media, Alta }
-        public enum EstadoTarea { Pendiente, EnProgreso, Completada, Cancelada }
+   
         public int Id { get; }
         public string Titulo { get; }
         public string Descripcion { get; }
@@ -15,22 +15,16 @@ namespace GestorDeTareas.Clases_Tareas
         public DateTime FechaCreacion { get; }
         public DateTime? FechaFinTarea { get; private set; }
         public PrioridadTarea Prioridad { get; private set; }
-        
         public string? MotivoCancelacion { get; }
         public EstadoTarea Estado { get; private set; }
         private string _motivoCancelacion;
         
-        public Tarea()
-        {
 
-        }
-
-        protected Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime? FechaFinTarea, PrioridadTarea prioridad, string? motivacionCancelacion, EstadoTarea estado)
+        public Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime? FechaFinTarea, PrioridadTarea prioridad, string? motivacionCancelacion, EstadoTarea estado)
         {
             if (string.IsNullOrWhiteSpace(titulo)) throw new ArgumentException("El título es obligatorio", nameof(titulo));
             //Añadir comprobacion de que la fecha fin no sea menor que la fecha de creacion o igual y que podamos controlar si esta finalizada
             //entonces con eso podremos saber si tiene fecha fin o no
-
             this.Id = id;
             this.Titulo = titulo.Trim();
             this.Descripcion = descripcion?.Trim() ?? string.Empty;

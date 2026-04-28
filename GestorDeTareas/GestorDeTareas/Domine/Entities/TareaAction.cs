@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
+using static GestorDeTareas.Domine.Enums.Enumerados;
 
-namespace GestorDeTareas.Clases_Tareas
+namespace GestorDeTareas.Domine.Entities
 {
     internal class TareaAction : Tarea
     {
         private readonly List<Tarea>? _subTareas = new();
-
-
-        public TareaAction(){}
 
         [JsonConstructor]
         public TareaAction(int Id,string Titulo,string Descripcion,string Responsable,DateTime FechaCreacion,DateTime? FechaFinTarea,PrioridadTarea Prioridad,string? MotivacionCancelacion,List<Tarea> _subTareas, EstadoTarea Estado, int TotalSubtareas, int SubtareasCompletadas) 

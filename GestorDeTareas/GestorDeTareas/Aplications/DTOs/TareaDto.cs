@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using static GestorDeTareas.Domine.Enums.Enumerados;
 
-namespace GestorDeTareas.Tareas_Json
+namespace GestorDeTareas.Aplications.DTOs
 {
     public class TareaDto
     {
-        public enum PrioridadTarea { Baja, Media, Alta }
-        public enum EstadoTarea { Pendiente, EnProgreso, Completada, Cancelada }
         public int Id { get; set; }
         public string Titulo { get; set; }
         public string Descripcion { get; set; }

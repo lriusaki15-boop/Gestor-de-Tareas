@@ -1,4 +1,5 @@
-﻿using GestorDeTareas.Tareas_Json;
+﻿using GestorDeTareas.Aplications.DTOs;
+
 namespace GestorTareas.Tests
 {
     public class Tests
