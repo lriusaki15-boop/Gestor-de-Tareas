@@ -17,7 +17,7 @@ namespace GestorDeTareas.Domine.Entities
         public string? MotivoCancelacion { get; } = string.Empty;
         public EstadoTarea Estado { get; private set; }
         private string _motivoCancelacion;
-        
+        public int UsuarioId { get; set; } 
 
         public Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime? FechaFinTarea, PrioridadTarea prioridad, string? motivacionCancelacion, EstadoTarea estado)
         {

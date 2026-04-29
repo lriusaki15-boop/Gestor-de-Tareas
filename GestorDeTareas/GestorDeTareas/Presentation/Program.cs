@@ -1,8 +1,4 @@
-﻿using GestorDeTareas;
-using GestorDeTareas.Tareas_Json;
-using static GestorDeTareas.Domine.Entities.Tarea;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static GestorDeTareas.Domine.Enums.Enumerados;
+﻿using static GestorDeTareas.Domine.Enums.Enumerados;
 using GestorDeTareas.Domine.Entities;
 
 
