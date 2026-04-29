@@ -5,7 +5,7 @@ using static GestorDeTareas.Domine.Enums.Enumerados;
 
 namespace GestorDeTareas.Domine.Entities
 {
-    internal abstract class Tarea
+    public abstract class Tarea
     {
    
         public int Id { get; }

@@ -8,5 +8,6 @@ namespace GestorDeTareas.Domine.Enums
     {
         public enum PrioridadTarea { Baja, Media, Alta }
         public enum EstadoTarea { Pendiente, EnProgreso, Completada, Cancelada }
+        public enum TipoUsuario { Admin, Trabajador, Cliente}
     }
 }
