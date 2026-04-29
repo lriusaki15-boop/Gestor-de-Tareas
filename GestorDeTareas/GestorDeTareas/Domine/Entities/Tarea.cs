@@ -7,15 +7,14 @@ namespace GestorDeTareas.Domine.Entities
 {
     public abstract class Tarea
     {
-   
         public int Id { get; }
-        public string Titulo { get; }
-        public string Descripcion { get; }
-        public string Responsable { get; }
+        public string Titulo { get; } = string.Empty;
+        public string Descripcion { get; } = string.Empty;
+        public string Responsable { get; } = string.Empty;
         public DateTime FechaCreacion { get; }
-        public DateTime? FechaFinTarea { get; private set; }
+        public DateTime? FechaFinTarea { get; private set; } = DateTime.Now;
         public PrioridadTarea Prioridad { get; private set; }
-        public string? MotivoCancelacion { get; }
+        public string? MotivoCancelacion { get; } = string.Empty;
         public EstadoTarea Estado { get; private set; }
         private string _motivoCancelacion;
         

@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace GestorDeTareas.Tareas_Json
 {
-    internal class TareasJson
+    public class TareasJson
     {
         const string ruta = "Tareas.json";
         public static void GuardarDatosJson(List<TareaAction> tareas)

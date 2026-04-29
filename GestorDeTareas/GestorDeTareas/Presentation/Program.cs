@@ -6,7 +6,6 @@ using static GestorDeTareas.Domine.Enums.Enumerados;
 using GestorDeTareas.Domine.Entities;
 
 
-
 var listaTareas = new List<TareaAction> {
                new TareaAction (1, "Tarea 1","Tarea nueva que a ver que pasa 1","Timon Pubis", DateTime.Today.AddDays(1), null, PrioridadTarea.Media, null, null, EstadoTarea.Pendiente,0,0),
                new TareaAction (2, "Tarea 2","Tarea nueva que a ver que pasa 2 lo serializa bien","Riki", DateTime.Today.AddDays(2), null, PrioridadTarea.Alta, null,null,EstadoTarea.EnProgreso,0,0),

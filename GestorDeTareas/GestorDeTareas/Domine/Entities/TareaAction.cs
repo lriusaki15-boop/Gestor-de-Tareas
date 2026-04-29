@@ -6,7 +6,7 @@ using static GestorDeTareas.Domine.Enums.Enumerados;
 
 namespace GestorDeTareas.Domine.Entities
 {
-    internal class TareaAction : Tarea
+    public class TareaAction : Tarea
     {
         private readonly List<Tarea>? _subTareas = new();
 
