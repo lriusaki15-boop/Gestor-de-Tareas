@@ -1,4 +1,4 @@
-﻿using GestorDeTareas.Domine.Entities;
+﻿using GestorDeTareas.Dominio.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

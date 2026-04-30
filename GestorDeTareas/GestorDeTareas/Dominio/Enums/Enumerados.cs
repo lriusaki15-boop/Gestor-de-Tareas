@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GestorDeTareas.Domine.Enums
+namespace GestorDeTareas.Dominio.Enums
 {
     public class Enumerados
     {

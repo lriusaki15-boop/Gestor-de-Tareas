@@ -1,5 +1,5 @@
-﻿using static GestorDeTareas.Domine.Enums.Enumerados;
-using GestorDeTareas.Domine.Entities;
+﻿using static GestorDeTareas.Dominio.Enums.Enumerados;
+using GestorDeTareas.Dominio.Entities;
 
 
 var listaTareas = new List<TareaAction> {

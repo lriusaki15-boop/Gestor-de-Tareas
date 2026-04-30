@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using static GestorDeTareas.Domine.Enums.Enumerados;
+using static GestorDeTareas.Dominio.Enums.Enumerados;
 
 namespace GestorDeTareas.Aplications.DTOs
 {
