@@ -1,5 +1,7 @@
 ﻿using GestorDeTareas.Infrastructure.Data;
+using GestorDeTareas.Infrastructure.Servicios;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GestorDeTareas.Controllers
 {
@@ -7,11 +9,19 @@ namespace GestorDeTareas.Controllers
     [Route("api/[controller]")]
     public class TareasController : ControllerBase
     {
-        private readonly GestorTareasContext _context;
+        private readonly TareasServices _servicio;
+        public TareasController(TareasServices servicio) => _servicio = servicio;
 
-        public TareasController(GestorTareasContext context)
+        [HttpGet("{id}")]
+        public IActionResult ObtenerTareaPorId(int id)
         {
-            _context = context;
+            var tarea = _servicio.ObtenerPorId(id);
+
+            if (tarea == null)
+                return NotFound();
+
+            return Ok(tarea);
         }
+
     }
 }
