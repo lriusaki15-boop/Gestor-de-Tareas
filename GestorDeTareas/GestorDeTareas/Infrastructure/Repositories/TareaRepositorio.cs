@@ -11,23 +11,27 @@ namespace GestorDeTareas.Infrastructure.Repositories
 
         public TareaRepositorio(GestorTareasContext context) => _context = context;
 
-        public void Actualizar(Tarea tarea)
+        public void Actualizar(TareaDto tarea)
         {
-            throw new NotImplementedException();
+            _context.Tarea.Update(tarea);
+            _context.SaveChanges();
         }
 
         public void Agregar(TareaDto tarea)
         {
-            throw new NotImplementedException();
+            _context.Tarea.Add(tarea);
+            _context.SaveChanges();
         }
 
-        public void Eliminar(Tarea tarea)
+        public void Eliminar(int id)
         {
-            throw new NotImplementedException();
+            var tarea = ObtenerPorId(id);
+            _context.Tarea.Remove(tarea);
+            _context.SaveChanges();
         }
 
-        public Tarea? ObtenerPorId(int id) => _context.Tarea.FirstOrDefault(t => t.Id == id);
+        public TareaDto? ObtenerPorId(int id) => _context.Tarea.FirstOrDefault(t => t.Id == id);
 
-        public List<Tarea> ObtenerTodas() => _context.Tarea.ToList();
+        public List<TareaDto> ObtenerTodas() => _context.Tarea.ToList();
     }
 }

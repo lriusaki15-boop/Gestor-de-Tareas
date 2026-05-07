@@ -19,9 +19,10 @@ namespace GestorDeTareas.Aplications.DTOs
         public PrioridadTarea Prioridad { get; set; }
         public EstadoTarea Estado { get; set; }
         public string? MotivoCancelacion { get; set; }
-        public  List<TareaDto>? SubTareas { get; set; }
+        public  string? SubTareasId { get; set; }
+        public int UsuarioId { get; set; }
 
-        public TareaDto(int id, string titulo, string descripcion,string responsable, DateTime fechaCreacion, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion, List<TareaDto>? subTareas)
+        public TareaDto(int id, string titulo, string descripcion,string responsable, DateTime fechaCreacion, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion, string? subTareasId, int usuarioId)
         {
             this.Id = id;
             this.Titulo = titulo;
@@ -31,8 +32,9 @@ namespace GestorDeTareas.Aplications.DTOs
             this.FechaFinTarea = fechaFinTarea;
             this.Prioridad = prioridad;
             this.MotivoCancelacion = motivacionCancelacion;
-            this.SubTareas = subTareas;
+            this.SubTareasId = subTareasId;
             this.Estado = estado;
+            this.UsuarioId = usuarioId;
         }
     }
 }
