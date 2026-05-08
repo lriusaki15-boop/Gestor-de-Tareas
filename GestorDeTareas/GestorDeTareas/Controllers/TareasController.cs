@@ -34,19 +34,19 @@ namespace GestorDeTareas.Controllers
 
             return Ok(tareas);
         }
-        //// Pañar estos metodos añadir lo siguiente: CreatedAtAction(
-        //[HttpDelete("{id}")]
-        //public IActionResult EliminarTarea(int id)
-        //{
-        //    var tarea = _servicio.EliminarTarea;
-        //    return Ok(tarea);
-        //}
 
-        //[HttpPut("{id}")]
-        //public IActionResult CompletarTarea(int id)
-        //{
+        [HttpDelete("{id}")]
+        public IActionResult EliminarTarea(int id)
+        {
+            _servicio.EliminarTarea(id);
+            return NoContent();
+        }
 
-        //    return Ok(_servicio.CompletarTarea(id));
-        //}
+        [HttpPut("{id}", Name= "Completar Tarea")]
+        public IActionResult CompletarTarea(int id)
+        {
+            _servicio.CompletarTarea(id);
+            return NoContent();
+        }
     }
 }
