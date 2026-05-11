@@ -1,0 +1,23 @@
+﻿using static GestorDeTareas.Dominio.Enums.Enumerados;
+
+namespace GestorDeTareas.Aplications.DTOs
+{
+    public class UsuariosDto
+    {
+        public int Id { get; }
+        public string Nombre { get; private set; }
+        public string Apellido { get; private set; }
+        public string Email { get; private set; }
+        public string ContraseniaHash { get; set; } = string.Empty;
+        public TipoUsuario Rango { get; set; }
+
+        public UsuariosDto(int id, string nombre, string apellido, string contrasenia, TipoUsuario rango)
+        {
+            this.Id = id;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.ContraseniaHash = contrasenia;
+            this.Rango = rango;
+        }
+    }
+}
