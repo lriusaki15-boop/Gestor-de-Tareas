@@ -1,32 +1,35 @@
 ﻿using GestorDeTareas.Aplications.DTOs;
+using GestorDeTareas.Infrastructure.Data;
 
 namespace GestorDeTareas.Infrastructure.Repositories
 {
     public class UsuariosRepositorio : IUsuariosRepositorio
     {
+        private readonly GestorTareasContext _context;
+
+        public UsuariosRepositorio(GestorTareasContext context) => _context = context;
+
         public void ActualizarDatosUsuario(UsuariosDto usuario)
         {
-            throw new NotImplementedException();
+            _context.Usuarios.Update(usuario);
+            _context.SaveChanges();
         }
 
         public void CrearUsuario(UsuariosDto usuario)
         {
-            throw new NotImplementedException();
+            _context.Usuarios.Add(usuario);
+            _context.SaveChanges();
         }
 
         public void EliminarUsuario(int id)
         {
-            throw new NotImplementedException();
+            var usuario = ObtenerUsuarioPorId(id);
+            _context.Usuarios.Remove(usuario);
         }
 
-        public UsuariosDto? ObtenerUsuarioPorId(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public UsuariosDto? ObtenerUsuarioPorId(int id) => _context.Usuarios.FirstOrDefault(t => t.Id == id);
 
-        public List<UsuariosDto> ObtenerTodos()
-        {
-            throw new NotImplementedException();
-        }
+
+        public List<UsuariosDto> ObtenerTodos() => _context.Usuarios.ToList();
     }
 }

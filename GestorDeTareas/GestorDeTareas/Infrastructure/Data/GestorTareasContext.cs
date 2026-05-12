@@ -6,7 +6,7 @@ namespace GestorDeTareas.Infrastructure.Data;
 public class GestorTareasContext : DbContext
 {
     // Cada DbSet representa una tabla en la BD
-    public DbSet<Usuarios> Usuarios { get; set; }
+    public DbSet<UsuariosDto> Usuarios { get; set; }
     public DbSet<TareaDto> Tarea { get; set; }
 
 }
