@@ -15,5 +15,9 @@ namespace GestorDeTareas.Infrastructure.Servicios
             _repositorio.CrearUsuario(usuario);
             return usuario;
         }
+
+        public void EliminarUsuario(int id) => _repositorio.EliminarUsuario(id);
+
+        public void ActualizarUsuario(UsuariosDto usuario) => _repositorio.ActualizarDatosUsuario(usuario);
     }
 }

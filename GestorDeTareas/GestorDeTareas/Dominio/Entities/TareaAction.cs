@@ -11,8 +11,8 @@ namespace GestorDeTareas.Dominio.Entities
         private readonly List<Tarea>? _subTareas = new();
 
         [JsonConstructor]
-        public TareaAction(int Id,string Titulo,string Descripcion,string Responsable,DateTime FechaCreacion,DateTime? FechaFinTarea,PrioridadTarea Prioridad,string? MotivacionCancelacion,List<Tarea> _subTareas, EstadoTarea Estado, int TotalSubtareas, int SubtareasCompletadas) 
-            : base(Id,Titulo,Descripcion,Responsable,FechaCreacion,FechaFinTarea,Prioridad,MotivacionCancelacion, Estado)
+        public TareaAction(int Id,string Titulo,string Descripcion,string Responsable,DateTime FechaCreacion,DateTime? FechaFinTarea,PrioridadTarea Prioridad,string? MotivacionCancelacion,List<Tarea> _subTareas, EstadoTarea Estado, int TotalSubtareas, int SubtareasCompletadas, int UsuarioId) 
+            : base(Id,Titulo,Descripcion,Responsable,FechaCreacion,FechaFinTarea,Prioridad,MotivacionCancelacion, Estado, UsuarioId)
         {
         }
 

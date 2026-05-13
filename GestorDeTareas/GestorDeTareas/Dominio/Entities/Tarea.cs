@@ -19,7 +19,7 @@ namespace GestorDeTareas.Dominio.Entities
         private string _motivoCancelacion;
         public int UsuarioId { get; set; } 
 
-        public Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime? FechaFinTarea, PrioridadTarea prioridad, string? motivacionCancelacion, EstadoTarea estado)
+        public Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime? FechaFinTarea, PrioridadTarea prioridad, string? motivacionCancelacion, EstadoTarea estado, int usuarioId)
         {
             if (string.IsNullOrWhiteSpace(titulo)) throw new ArgumentException("El título es obligatorio", nameof(titulo));
             //Añadir comprobacion de que la fecha fin no sea menor que la fecha de creacion o igual y que podamos controlar si esta finalizada
@@ -33,6 +33,7 @@ namespace GestorDeTareas.Dominio.Entities
             this.Prioridad = prioridad;
             this.Estado = EstadoTarea.Pendiente;
             this.MotivoCancelacion = motivacionCancelacion ?? string.Empty;
+            this.UsuarioId = usuarioId;
         }
 
         public bool Iniciar()

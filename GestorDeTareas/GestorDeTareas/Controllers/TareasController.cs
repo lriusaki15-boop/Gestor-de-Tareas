@@ -1,6 +1,7 @@
 ﻿using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Infrastructure.Data;
 using GestorDeTareas.Infrastructure.Servicios;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace GestorDeTareas.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class TareasController : ControllerBase
     {
         private readonly TareasServices _servicio;
@@ -88,7 +90,7 @@ namespace GestorDeTareas.Controllers
         }
 
         /// <summary>
-        /// Actualiza el estado de una tarea a Cancelada y se le da un motivo de cancelacion.
+        /// Actualiza el estado de una tarea a Cancelada.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
         [HttpPut("ActualizarCancelarTarea/{id}")]
