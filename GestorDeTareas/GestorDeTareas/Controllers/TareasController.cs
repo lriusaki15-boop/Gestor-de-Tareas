@@ -4,6 +4,7 @@ using GestorDeTareas.Infrastructure.Servicios;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static GestorDeTareas.Dominio.Enums.Enumerados;
 
 namespace GestorDeTareas.Controllers
 {
@@ -57,79 +58,37 @@ namespace GestorDeTareas.Controllers
         }
 
         /// <summary>
-        /// Actualiza el estado de una tarea a Completa.
+        /// Actualiza el estado de una tarea.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPut("ActualizarCompletarTarea/{id}")]
-        public IActionResult CompletarTarea(int id)
+        [HttpPut("ActualizarEstadoTarea/{id}, {estado}")]
+        public IActionResult CompletarTarea(int id, EstadoTarea estado, string? motivoCancelacion)
         {
-            _servicio.CompletarTarea(id);
+            if(estado == EstadoTarea.Completada)
+                _servicio.CompletarTarea(id);
+            if (estado == EstadoTarea.Pendiente)
+                _servicio.PendienteTarea(id);
+            if (estado == EstadoTarea.EnProgreso)
+                _servicio.EnProgresoTarea(id);
+            if (estado == EstadoTarea.Cancelada)
+                _servicio.CancelarTarea(id, motivoCancelacion);
             return NoContent();
         }
 
+        
         /// <summary>
-        /// Actualiza el estado de una tarea a Pendiente.
+        /// Actualiza la Prioridad de una tarea.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPut("ActualizarPendienteTarea/{id}")]
-        public IActionResult PendienteTarea(int id)
+        [HttpPut("ActualizarPrioridadTarea/{id}, {prioridad}")]
+        public IActionResult ActualizaPrioridadTarea(int id, PrioridadTarea prioridad)
         {
-            _servicio.PendienteTarea(id);
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Actualiza el estado de una tarea a EnProgreso.
-        /// </summary>
-        /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPut("ActualizarEnProgresoTarea/{id}")]
-        public IActionResult EnProgresoTarea(int id)
-        {
-            _servicio.EnProgresoTarea(id);
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Actualiza el estado de una tarea a Cancelada.
-        /// </summary>
-        /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPut("ActualizarCancelarTarea/{id}")]
-        public IActionResult CancelarTarea(int id, string motivoCancelacion)
-        {
-            _servicio.CancelarTarea(id, motivoCancelacion);
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Actualiza la Prioridad de una tarea a Baja.
-        /// </summary>
-        /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPut("ActualizarPrioridadBajaTarea/{id}")]
-        public IActionResult PrioridadBajaTarea(int id)
-        {
-            _servicio.PrioridadBajaTarea(id);
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Actualiza la Prioridad de una tarea a Media.
-        /// </summary>
-        /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPut("ActualizarPrioridadMediaTarea/{id}")]
-        public IActionResult PrioridadMediaTarea(int id)
-        {
-            _servicio.PrioridadMediaTarea(id);
-            return NoContent();
-        }
-
-        /// <summary>
-        /// Actualiza la Prioridad de una tarea a Alta.
-        /// </summary>
-        /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPut("ActualizarPrioridadAltaTarea/{id}")]
-        public IActionResult PrioridadAltaTarea(int id)
-        {
-            _servicio.PrioridadMediaTarea(id);
+            if(prioridad == PrioridadTarea.Baja)
+                _servicio.PrioridadBajaTarea(id);
+            if (prioridad == PrioridadTarea.Media)
+                _servicio.PrioridadMediaTarea(id);
+            if (prioridad == PrioridadTarea.Alta)
+                _servicio.PrioridadAltaTarea(id);
             return NoContent();
         }
     }

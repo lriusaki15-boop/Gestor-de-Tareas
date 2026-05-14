@@ -19,11 +19,14 @@ namespace GestorDeTareas.Dominio.Entities
         private string _motivoCancelacion;
         public int UsuarioId { get; set; } 
 
+        public Tarea()
+        {
+
+        }
+
         public Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime? FechaFinTarea, PrioridadTarea prioridad, string? motivacionCancelacion, EstadoTarea estado, int usuarioId)
         {
             if (string.IsNullOrWhiteSpace(titulo)) throw new ArgumentException("El título es obligatorio", nameof(titulo));
-            //Añadir comprobacion de que la fecha fin no sea menor que la fecha de creacion o igual y que podamos controlar si esta finalizada
-            //entonces con eso podremos saber si tiene fecha fin o no
             this.Id = id;
             this.Titulo = titulo.Trim();
             this.Descripcion = descripcion?.Trim() ?? string.Empty;

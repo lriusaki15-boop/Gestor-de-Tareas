@@ -14,6 +14,11 @@ namespace GestorDeTareas.Dominio.Entities
         public string ContraseniaHash { get; set; } = string.Empty;
         public TipoUsuario Rango { get; set; }
 
+        public Usuarios()
+        {
+
+        }
+
         public Usuarios(int id, string nombre, string apellido, string contrasenia, TipoUsuario rango)
         {
             this.Id = id;

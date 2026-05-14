@@ -6,7 +6,7 @@ using static GestorDeTareas.Dominio.Enums.Enumerados;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.Services.AddDbContext<GestorTareasContext> (options => options.UseSqlServer(builder.Configuration.GetConnectionString("GestorTareas")));
+builder.Services.AddDbContext<GestorTareasContext> (options => options.UseSqlServer(builder.Configuration.GetConnectionString("GestorTareas")));
 
 builder.Services.AddSwaggerGen(options =>
 {
