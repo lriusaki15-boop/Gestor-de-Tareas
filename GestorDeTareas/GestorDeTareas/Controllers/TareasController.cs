@@ -65,13 +65,13 @@ namespace GestorDeTareas.Controllers
         public IActionResult CompletarTarea(int id, EstadoTarea estado, string? motivoCancelacion)
         {
             if(estado == EstadoTarea.Completada)
-                _servicio.CompletarTarea(id);
+                _servicio.ActualizarEstadosTarea(id,motivoCancelacion,estado);
             if (estado == EstadoTarea.Pendiente)
-                _servicio.PendienteTarea(id);
+                _servicio.ActualizarEstadosTarea(id, motivoCancelacion, estado);
             if (estado == EstadoTarea.EnProgreso)
-                _servicio.EnProgresoTarea(id);
+                _servicio.ActualizarEstadosTarea(id, motivoCancelacion, estado);
             if (estado == EstadoTarea.Cancelada)
-                _servicio.CancelarTarea(id, motivoCancelacion);
+                _servicio.ActualizarEstadosTarea(id, motivoCancelacion, estado);
             return NoContent();
         }
 
@@ -84,11 +84,11 @@ namespace GestorDeTareas.Controllers
         public IActionResult ActualizaPrioridadTarea(int id, PrioridadTarea prioridad)
         {
             if(prioridad == PrioridadTarea.Baja)
-                _servicio.PrioridadBajaTarea(id);
+                _servicio.ActualizarPrioridadTarea(id,prioridad);
             if (prioridad == PrioridadTarea.Media)
-                _servicio.PrioridadMediaTarea(id);
+                _servicio.ActualizarPrioridadTarea(id, prioridad);
             if (prioridad == PrioridadTarea.Alta)
-                _servicio.PrioridadAltaTarea(id);
+                _servicio.ActualizarPrioridadTarea(id, prioridad);
             return NoContent();
         }
     }

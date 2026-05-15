@@ -22,55 +22,52 @@ namespace GestorDeTareas.Infrastructure.Servicios
         }
 
         public void EliminarTarea(int id)=> _repositorio.Eliminar(id);
-        public void CompletarTarea(int id)
+        public void ActualizarEstadosTarea(int id, string? motivoCancelacion, EstadoTarea estado)
         {
             var tarea = _repositorio.ObtenerPorId(id) ?? throw new KeyNotFoundException($"No existe la tarea con Id {id}");
-            tarea.Estado = EstadoTarea.Completada;
-            tarea.FechaFinTarea = DateTime.Now;
-            _repositorio.Actualizar(tarea);
-        }
-
-        public void PendienteTarea(int id)
-        {
-            var tarea = _repositorio.ObtenerPorId(id) ?? throw new KeyNotFoundException($"No existe la tarea con Id {id}");
-            tarea.Estado = EstadoTarea.Pendiente;
-            _repositorio.Actualizar(tarea);
-        }
-
-        public void EnProgresoTarea(int id)
-        {
-            var tarea = _repositorio.ObtenerPorId(id) ?? throw new KeyNotFoundException($"No existe la tarea con Id {id}");
-            tarea.Estado = EstadoTarea.EnProgreso;
-            _repositorio.Actualizar(tarea);
-        }
-
-        public void CancelarTarea(int id, string motivoCancelacion)
-        {
-            var tarea = _repositorio.ObtenerPorId(id) ?? throw new KeyNotFoundException($"No existe la tarea con Id {id}");
-            if (motivoCancelacion.Count() != 0)
+            if (estado == EstadoTarea.Completada)
+            {
+                tarea.Estado = estado;
+                tarea.FechaFinTarea = DateTime.Now;
+                _repositorio.Actualizar(tarea);
+            }
+            if (estado == EstadoTarea.Pendiente)
+            {
+                tarea.Estado = estado;
+                _repositorio.Actualizar(tarea);
+            }
+            if (estado == EstadoTarea.EnProgreso)
+            {
+                tarea.Estado = estado;
+                _repositorio.Actualizar(tarea);
+            }
+            if (estado == EstadoTarea.Cancelada)
+            {
+                tarea.Estado = estado;
                 tarea.MotivoCancelacion = motivoCancelacion;
-            tarea.Estado = EstadoTarea.Cancelada;
-            _repositorio.Actualizar(tarea);
+                _repositorio.Actualizar(tarea);
+            }
         }
 
-        public void PrioridadBajaTarea(int id)
+        public void ActualizarPrioridadTarea(int id, PrioridadTarea prioridad)
         {
             var tarea = _repositorio.ObtenerPorId(id) ?? throw new KeyNotFoundException($"No existe la tarea con Id {id}");
-            tarea.Prioridad = PrioridadTarea.Baja;
-            _repositorio.Actualizar(tarea);
-        }
+            if (prioridad == PrioridadTarea.Baja)
+            {
+                tarea.Prioridad = prioridad;
+                _repositorio.Actualizar(tarea);
+            }
+            if (prioridad == PrioridadTarea.Media)
+            {
+                tarea.Prioridad = prioridad;
+                _repositorio.Actualizar(tarea);
+            }
+            if (prioridad == PrioridadTarea.Alta)
+            {
+                tarea.Prioridad = prioridad;
+                _repositorio.Actualizar(tarea);
+            }
 
-        public void PrioridadMediaTarea(int id)
-        {
-            var tarea = _repositorio.ObtenerPorId(id) ?? throw new KeyNotFoundException($"No existe la tarea con Id {id}");
-            tarea.Prioridad = PrioridadTarea.Media;
-            _repositorio.Actualizar(tarea);
-        }
-
-        public void PrioridadAltaTarea(int id)
-        {
-            var tarea = _repositorio.ObtenerPorId(id) ?? throw new KeyNotFoundException($"No existe la tarea con Id {id}");
-            tarea.Prioridad = PrioridadTarea.Alta;
             _repositorio.Actualizar(tarea);
         }
     }
