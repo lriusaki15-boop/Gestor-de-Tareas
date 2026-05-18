@@ -21,5 +21,15 @@ namespace GestorDeTareas.Aplications.DTOs
             this.Estado = estado;
             this.UsuarioId = usuarioId;
         }
+
+        public CrearTareaDto(string titulo, string responsable, DateTime fechaCreacion, PrioridadTarea prioridad, EstadoTarea estado, int usuarioId)
+        {
+            Titulo = titulo;
+            Responsable = responsable;
+            FechaCreacion = fechaCreacion;
+            Prioridad = prioridad;
+            Estado = estado;
+            UsuarioId = usuarioId;
+        }
     }
 }

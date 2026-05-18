@@ -1,4 +1,5 @@
-﻿using GestorDeTareas.Dominio.Entities;
+﻿using GestorDeTareas.Aplications.DTOs;
+using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Infrastructure.Data;
 using GestorDeTareas.Infrastructure.Servicios;
 using Microsoft.AspNetCore.Authorization;
@@ -89,6 +90,20 @@ namespace GestorDeTareas.Controllers
                 _servicio.ActualizarPrioridadTarea(id, prioridad);
             if (prioridad == PrioridadTarea.Alta)
                 _servicio.ActualizarPrioridadTarea(id, prioridad);
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Crea una tarea nueva.
+        /// </summary>
+        /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
+        [HttpPost("CrearTarea/{titulo}, {descripcion}, {responsable}, {prioridadTarea}, {estado}, {usuarioId}")]
+
+        public IActionResult CrearTarea(string titulo, string responsable, PrioridadTarea prioridadTarea, EstadoTarea estado, int usuarioId)
+        {
+            DateTime fechaCreacion = DateTime.Now;
+            var tareaNueva = new CrearTareaDto(titulo, responsable,fechaCreacion, prioridadTarea, estado, usuarioId);
+            _servicio.Crear(tareaNueva);
             return NoContent();
         }
     }
