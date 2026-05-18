@@ -15,7 +15,7 @@ namespace GestorDeTareas.Infrastructure.Servicios
         public List<TareaDto> ObtenerTodas() => _repositorio.ObtenerTodas();
         public TareaDto? ObtenerPorId(int id) => _repositorio.ObtenerPorId(id);
 
-        public TareaDto Crear(TareaDto tareaDatos)
+        public CrearTareaDto Crear(CrearTareaDto tareaDatos)
         {
             _repositorio.Agregar(tareaDatos);
             return tareaDatos;

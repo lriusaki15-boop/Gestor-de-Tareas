@@ -7,7 +7,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
     {
         List<TareaDto>ObtenerTodas();
         TareaDto? ObtenerPorId(int id);
-        void Agregar(TareaDto tarea);
+        void Agregar(CrearTareaDto tarea);
         void Actualizar(TareaDto tarea);
         void Eliminar(int id);
     }
