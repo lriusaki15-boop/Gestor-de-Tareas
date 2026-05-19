@@ -1,5 +1,7 @@
 ﻿using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Infrastructure.Data;
+using GestorDeTareas.Infrastructure.Repositories;
+using GestorDeTareas.Infrastructure.Servicios;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using static GestorDeTareas.Dominio.Enums.Enumerados;
@@ -20,6 +22,8 @@ builder.Services.AddSwaggerGen(options =>
 
 // PARTE 1: registrar servicios
 builder.Services.AddControllers();
+builder.Services.AddScoped<TareasServices>();
+builder.Services.AddScoped<ITareaRepositorio, TareaRepositorio>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

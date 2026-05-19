@@ -3,6 +3,7 @@ using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Infrastructure.Data;
 using GestorDeTareas.Infrastructure.Servicios;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using static GestorDeTareas.Dominio.Enums.Enumerados;
@@ -11,7 +12,7 @@ namespace GestorDeTareas.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class TareasController : ControllerBase
     {
         private readonly TareasServices _servicio;
@@ -97,12 +98,15 @@ namespace GestorDeTareas.Controllers
         /// Crea una tarea nueva.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPost("CrearTarea/{titulo}, {descripcion}, {responsable}, {prioridadTarea}, {estado}, {usuarioId}")]
+        [HttpPost("CrearTarea")]
 
-        public IActionResult CrearTarea(string titulo, string responsable, PrioridadTarea prioridadTarea, EstadoTarea estado, int usuarioId)
+        public IActionResult CrearTarea([FromBody] CrearTareaDto tareaNueva)
         {
-            DateTime fechaCreacion = DateTime.Now;
-            var tareaNueva = new CrearTareaDto(titulo, responsable,fechaCreacion, prioridadTarea, estado, usuarioId);
+            tareaNueva.FechaCreacion = DateTime.Now;
+            if(tareaNueva.Estado != EstadoTarea.Pendiente)
+            {
+                tareaNueva.Estado = EstadoTarea.Pendiente;
+            }
             _servicio.Crear(tareaNueva);
             return NoContent();
         }

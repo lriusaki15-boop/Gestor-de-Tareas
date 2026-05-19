@@ -17,9 +17,19 @@ namespace GestorDeTareas.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public void Agregar(TareaDto tarea)
+        public void Agregar(CrearTareaDto tarea)
         {
-            _context.Tarea.Add(tarea);
+            var tareaDto = new TareaDto
+            {
+                Titulo = tarea.Titulo,
+                Descripcion = tarea.Descripcion,
+                Responsable = tarea.Responsable,
+                FechaCreacion = tarea.FechaCreacion, 
+                Estado = tarea.Estado, 
+                Prioridad = tarea.Prioridad, 
+                UsuarioId = tarea.UsuarioId
+            };
+            _context.Tarea.Add(tareaDto);
             _context.SaveChanges();
         }
 
@@ -32,6 +42,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
 
         public TareaDto? ObtenerPorId(int id) => _context.Tarea.FirstOrDefault(t => t.Id == id);
 
-        public List<TareaDto> ObtenerTodas() => _context.Tarea.ToList();
+        public List<TareaDto> ObtenerTodas() => _context.Tarea.Select(t => new TareaDto(t.Id, t.Titulo, t.Descripcion, t.Responsable,
+            t.FechaCreacion, t.FechaFinTarea, t.Prioridad, t.Estado, t.MotivoCancelacion, t.UsuarioId)).ToList();
     }
 }

@@ -22,7 +22,9 @@ namespace GestorDeTareas.Aplications.DTOs
         public  string? SubTareasId { get; set; }
         public int UsuarioId { get; set; }
 
-        public TareaDto(int id, string titulo, string descripcion,string responsable, DateTime fechaCreacion, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion, string? subTareasId, int usuarioId)
+        public TareaDto() { }
+
+        public TareaDto(int id, string titulo, string descripcion, string responsable, DateTime fechaCreacion, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion, string? subTareasId, int usuarioId)
         {
             this.Id = id;
             this.Titulo = titulo;
@@ -35,6 +37,31 @@ namespace GestorDeTareas.Aplications.DTOs
             this.SubTareasId = subTareasId;
             this.Estado = estado;
             this.UsuarioId = usuarioId;
+        }
+
+        public TareaDto(string titulo, string descripcion, string responsable, DateTime fechaCreacion, PrioridadTarea prioridad, EstadoTarea estado, int usuarioId)
+        {
+            this.Titulo = titulo;
+            this.Descripcion = descripcion;
+            this.Responsable = responsable;
+            this.FechaCreacion = fechaCreacion;
+            this.Prioridad = prioridad;
+            this.Estado = estado;
+            this.UsuarioId = usuarioId;
+        }
+
+        public TareaDto(int id, string titulo, string descripcion, string responsable, DateTime fechaCreacion, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivoCancelacion, int usuarioId)
+        {
+            Id = id;
+            Titulo = titulo;
+            Descripcion = descripcion;
+            Responsable = responsable;
+            FechaCreacion = fechaCreacion;
+            FechaFinTarea = fechaFinTarea;
+            Prioridad = prioridad;
+            Estado = estado;
+            MotivoCancelacion = motivoCancelacion;
+            UsuarioId = usuarioId;
         }
     }
 }
