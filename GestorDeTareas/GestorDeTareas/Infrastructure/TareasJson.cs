@@ -9,12 +9,12 @@ namespace GestorDeTareas.Tareas_Json
     public class TareasJson
     {
         const string ruta = "Tareas.json";
-        public static void GuardarDatosJson(List<TareaAction> tareas)
+        public static void GuardarDatosJson(List<Tarea> tareas)
         {
             string json = JsonSerializer.Serialize(tareas);
             File.WriteAllText("Tareas.json", json);
         }
-         public static List<TareaAction> RecuperarDatos()
+         public static List<Tarea> RecuperarDatos()
         {
             var opciones = new JsonSerializerOptions
             {
@@ -22,7 +22,7 @@ namespace GestorDeTareas.Tareas_Json
                 IncludeFields = true
             };
             string json = File.ReadAllText(ruta);
-            return JsonSerializer.Deserialize<List<TareaAction>>(json, opciones) ?? new();
+            return JsonSerializer.Deserialize<List<Tarea>>(json, opciones) ?? new();
         }
     }
 }

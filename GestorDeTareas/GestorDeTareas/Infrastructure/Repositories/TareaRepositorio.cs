@@ -46,7 +46,6 @@ namespace GestorDeTareas.Infrastructure.Repositories
 
         public Tarea? ObtenerPorId(int id) => _context.Tarea.FirstOrDefault(t => t.Id == id);
 
-        public List<Tarea> ObtenerTodas() => _context.Tarea.Select(t => new Tarea(t.Id, t.Titulo, t.Descripcion, t.Responsable,
-            t.FechaCreacion, t.FechaFinTarea, t.Prioridad, t.Estado, t.MotivoCancelacion, t.UsuarioId)).ToList();
+        public List<Tarea> ObtenerTodas() => _context.Tarea.ToList();
     }
 }
