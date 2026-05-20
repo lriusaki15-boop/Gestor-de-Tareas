@@ -5,6 +5,9 @@
       "distributionName": ""
     },
     "GestorDeTareas": {
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
       "commandName": "Project",
       "workingDirectory": "C:\\Users\\Oceano\\Desktop\\Proyecto\\GestorDeTareas"
     }

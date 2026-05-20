@@ -5,11 +5,9 @@ using Microsoft.EntityFrameworkCore;
 namespace GestorDeTareas.Infrastructure.Data;
 public class GestorTareasContext : DbContext
 {
-    // Cada DbSet representa una tabla en la BD
-    public DbSet<UsuariosDto> Usuarios { get; set; }
-    public DbSet<TareaDto> Tarea { get; set; }
-    
-    public GestorTareasContext(DbContextOptions<GestorTareasContext> options) : base(options){
-    }
+    public GestorTareasContext(DbContextOptions<GestorTareasContext> options) : base(options){ }
+
+    public DbSet<Usuarios> Usuarios { get; set; }
+    public DbSet<TareaAction> Tarea { get; set; }
 
 }

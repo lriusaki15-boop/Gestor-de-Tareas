@@ -7,9 +7,9 @@ using System.Reflection;
 using static GestorDeTareas.Dominio.Enums.Enumerados;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddDbContext<GestorTareasContext> (options => options.UseSqlServer(builder.Configuration.GetConnectionString("GestorTareas")));
-
+// PARTE 1: registrar servicios
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     var xmlFile = $"{Assembly
@@ -19,13 +19,13 @@ builder.Services.AddSwaggerGen(options =>
     AppContext.BaseDirectory, xmlFile);
     options.IncludeXmlComments(xmlPath);
 });
+builder.Services.AddDbContext<GestorTareasContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("GestorTareas")));
 
-// PARTE 1: registrar servicios
-builder.Services.AddControllers();
 builder.Services.AddScoped<TareasServices>();
 builder.Services.AddScoped<ITareaRepositorio, TareaRepositorio>();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<UsuariosServices>();
+builder.Services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
 
 var app = builder.Build();
 
