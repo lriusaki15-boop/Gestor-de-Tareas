@@ -8,14 +8,14 @@ namespace GestorDeTareas.Dominio.Entities
     public abstract class Tarea
     {
         public int Id { get; set; }
-        public string Titulo { get; } = string.Empty;
+        public string Titulo { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
         public string Responsable { get; set; } = string.Empty;
         public DateTime FechaCreacion { get; set; }
-        public DateTime? FechaFinTarea { get; private set; } = DateTime.Now;
-        public PrioridadTarea Prioridad { get; private set; }
+        public DateTime? FechaFinTarea { get; set; } = DateTime.Now;
+        public PrioridadTarea Prioridad { get; set; }
         public string? MotivoCancelacion { get; set; } = string.Empty;
-        public EstadoTarea Estado { get; private set; }
+        public EstadoTarea Estado { get; set; }
         private string _motivoCancelacion;
         public int UsuarioId { get; set; } 
 
