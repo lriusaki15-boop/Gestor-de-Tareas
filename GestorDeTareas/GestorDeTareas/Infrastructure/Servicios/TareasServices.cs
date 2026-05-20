@@ -31,20 +31,15 @@ namespace GestorDeTareas.Infrastructure.Servicios
                 tarea.FechaFinTarea = DateTime.Now;
                 _repositorio.Actualizar(tarea);
             }
-            if (estado == EstadoTarea.Pendiente)
-            {
-                tarea.Estado = estado;
-                _repositorio.Actualizar(tarea);
-            }
-            if (estado == EstadoTarea.EnProgreso)
-            {
-                tarea.Estado = estado;
-                _repositorio.Actualizar(tarea);
-            }
-            if (estado == EstadoTarea.Cancelada)
+            else if (estado == EstadoTarea.Cancelada)
             {
                 tarea.Estado = estado;
                 tarea.MotivoCancelacion = motivoCancelacion;
+                _repositorio.Actualizar(tarea);
+            }
+            else if(estado == EstadoTarea.EnProgreso || estado == EstadoTarea.Pendiente)
+            {
+                tarea.Estado = estado;
                 _repositorio.Actualizar(tarea);
             }
         }

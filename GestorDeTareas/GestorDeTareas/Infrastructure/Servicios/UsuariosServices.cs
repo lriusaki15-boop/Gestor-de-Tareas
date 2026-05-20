@@ -7,6 +7,11 @@ namespace GestorDeTareas.Infrastructure.Servicios
     {
         private readonly IUsuariosRepositorio _repositorio;
 
+        public UsuariosServices(IUsuariosRepositorio repositorio)
+        {
+            _repositorio = repositorio;
+        }
+
         public List<Usuarios> ObtenerListaUsuarios() => _repositorio.ObtenerTodos();
 
         public Usuarios ObtenerDatosUsuario(int id) => _repositorio.ObtenerUsuarioPorId(id);

@@ -25,7 +25,10 @@ namespace GestorDeTareas.Infrastructure.Repositories
         public void EliminarUsuario(int id)
         {
             var usuario = ObtenerUsuarioPorId(id);
+            if (usuario is null) return;
+
             _context.Usuarios.Remove(usuario);
+            _context.SaveChanges();
         }
 
         public Usuarios? ObtenerUsuarioPorId(int id) => _context.Usuarios.FirstOrDefault(t => t.Id == id);
