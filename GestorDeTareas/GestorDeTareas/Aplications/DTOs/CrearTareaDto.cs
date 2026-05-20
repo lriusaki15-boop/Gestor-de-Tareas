@@ -12,6 +12,10 @@ namespace GestorDeTareas.Aplications.DTOs
         public EstadoTarea Estado { get; set; }
         public int UsuarioId { get; set; }
 
+        public CrearTareaDto()
+        {
+
+        }
         public CrearTareaDto(string titulo, string descripcion, string responsable, DateTime fechaCreacion, PrioridadTarea prioridad, EstadoTarea estado, int usuarioId)
         {
             this.Titulo = titulo;
