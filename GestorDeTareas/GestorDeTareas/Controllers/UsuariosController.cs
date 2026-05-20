@@ -31,7 +31,7 @@ namespace GestorDeTareas.Controllers
         /// Obtiene un listado con la informacion basica de los Usuarios.
         /// </summary>
         /// <returns>Devuelve la informacion de todos los Usuarios.</returns>
-        [HttpGet("ObtenerListadoUsuarios/{id}")]
+        [HttpGet("ObtenerListadoUsuarios/")]
         public IActionResult ObtenerListadoUsuarios()
         {
             var usuario = _servicio.ObtenerListaUsuarios();

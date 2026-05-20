@@ -66,14 +66,7 @@ namespace GestorDeTareas.Controllers
         [HttpPut("ActualizarEstadoTarea/{id}, {estado}")]
         public IActionResult CompletarTarea(int id, EstadoTarea estado, string? motivoCancelacion)
         {
-            if(estado == EstadoTarea.Completada)
-                _servicio.ActualizarEstadosTarea(id,motivoCancelacion,estado);
-            if (estado == EstadoTarea.Pendiente)
-                _servicio.ActualizarEstadosTarea(id, motivoCancelacion, estado);
-            if (estado == EstadoTarea.EnProgreso)
-                _servicio.ActualizarEstadosTarea(id, motivoCancelacion, estado);
-            if (estado == EstadoTarea.Cancelada)
-                _servicio.ActualizarEstadosTarea(id, motivoCancelacion, estado);
+            _servicio.ActualizarEstadosTarea(id, motivoCancelacion, estado);
             return NoContent();
         }
 
@@ -85,12 +78,7 @@ namespace GestorDeTareas.Controllers
         [HttpPut("ActualizarPrioridadTarea/{id}, {prioridad}")]
         public IActionResult ActualizaPrioridadTarea(int id, PrioridadTarea prioridad)
         {
-            if(prioridad == PrioridadTarea.Baja)
-                _servicio.ActualizarPrioridadTarea(id,prioridad);
-            if (prioridad == PrioridadTarea.Media)
-                _servicio.ActualizarPrioridadTarea(id, prioridad);
-            if (prioridad == PrioridadTarea.Alta)
-                _servicio.ActualizarPrioridadTarea(id, prioridad);
+            _servicio.ActualizarPrioridadTarea(id, prioridad);
             return NoContent();
         }
 

@@ -12,7 +12,7 @@ namespace GestorDeTareas.Dominio.Entities
         public string Descripcion { get; set; } = string.Empty;
         public string Responsable { get; set; } = string.Empty;
         public DateTime FechaCreacion { get; set; }
-        public DateTime? FechaFinTarea { get; set; } = DateTime.Now;
+        public DateTime? FechaFinTarea { get; set; } = null;
         public PrioridadTarea Prioridad { get; set; }
         public string? MotivoCancelacion { get; set; } = string.Empty;
         public EstadoTarea Estado { get; set; }
@@ -51,7 +51,7 @@ namespace GestorDeTareas.Dominio.Entities
 
         public bool Completar()
         {
-            if (Estado != EstadoTarea.Completada || Estado != EstadoTarea.Cancelada)
+            if (Estado != EstadoTarea.Completada && Estado != EstadoTarea.Cancelada)
             {
                 Estado = EstadoTarea.Completada;
                 FechaFinTarea = DateTime.Now;

@@ -36,6 +36,10 @@ namespace GestorDeTareas.Infrastructure.Repositories
         public void Eliminar(int id)
         {
             var tarea = ObtenerPorId(id);
+
+            if (tarea is null)
+                return;
+
             _context.Tarea.Remove(tarea);
             _context.SaveChanges();
         }

@@ -16,6 +16,7 @@ namespace GestorDeTareas.Aplications.DTOs
         {
             this.Titulo = titulo;
             this.Descripcion = descripcion;
+            this.Responsable = responsable;
             this.FechaCreacion = fechaCreacion;
             this.Prioridad = prioridad;
             this.Estado = estado;
