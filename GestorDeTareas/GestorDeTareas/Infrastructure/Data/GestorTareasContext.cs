@@ -8,6 +8,6 @@ public class GestorTareasContext : DbContext
     public GestorTareasContext(DbContextOptions<GestorTareasContext> options) : base(options){ }
 
     public DbSet<Usuarios> Usuarios { get; set; }
-    public DbSet<TareaAction> Tarea { get; set; }
+    public DbSet<Tarea> Tarea { get; set; }
 
 }

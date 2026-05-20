@@ -5,7 +5,7 @@ using static GestorDeTareas.Dominio.Enums.Enumerados;
 
 namespace GestorDeTareas.Dominio.Entities
 {
-    public abstract class Tarea
+    public class Tarea
     {
         public int Id { get; set; }
         public string Titulo { get; set; } = string.Empty;
@@ -86,7 +86,5 @@ namespace GestorDeTareas.Dominio.Entities
 
             return false;
         }
-
-        public abstract string ObtenerResumen();
     }
 }

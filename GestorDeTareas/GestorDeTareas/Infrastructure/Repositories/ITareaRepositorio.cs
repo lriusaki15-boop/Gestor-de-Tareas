@@ -5,10 +5,10 @@ namespace GestorDeTareas.Infrastructure.Repositories
 {
     public interface ITareaRepositorio
     {
-        List<TareaAction>ObtenerTodas();
-        TareaAction? ObtenerPorId(int id);
+        List<Tarea>ObtenerTodas();
+        Tarea? ObtenerPorId(int id);
         void Agregar(CrearTareaDto tarea);
-        void Actualizar(TareaAction tarea);
+        void Actualizar(Tarea tarea);
         void Eliminar(int id);
     }
 }
