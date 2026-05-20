@@ -9,7 +9,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "commandName": "Project",
-      "workingDirectory": "workingDirectory": "$(ProjectDir)"
+      "workingDirectory": "$(ProjectDir)"
     }
   }
 }
