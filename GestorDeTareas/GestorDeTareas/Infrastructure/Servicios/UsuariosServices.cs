@@ -1,4 +1,5 @@
-﻿using GestorDeTareas.Aplications.DTOs;
+﻿
+using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Infrastructure.Repositories;
 namespace GestorDeTareas.Infrastructure.Servicios
 {
@@ -6,11 +7,11 @@ namespace GestorDeTareas.Infrastructure.Servicios
     {
         private readonly IUsuariosRepositorio _repositorio;
 
-        public List<UsuariosDto> ObtenerListaUsuarios() => _repositorio.ObtenerTodos();
+        public List<Usuarios> ObtenerListaUsuarios() => _repositorio.ObtenerTodos();
 
-        public UsuariosDto ObtenerDatosUsuario(int id) => _repositorio.ObtenerUsuarioPorId(id);
+        public Usuarios ObtenerDatosUsuario(int id) => _repositorio.ObtenerUsuarioPorId(id);
 
-        public UsuariosDto CrearUsuario(UsuariosDto usuario)
+        public Usuarios CrearUsuario(Usuarios usuario)
         {
             _repositorio.CrearUsuario(usuario);
             return usuario;
@@ -18,6 +19,6 @@ namespace GestorDeTareas.Infrastructure.Servicios
 
         public void EliminarUsuario(int id) => _repositorio.EliminarUsuario(id);
 
-        public void ActualizarUsuario(UsuariosDto usuario) => _repositorio.ActualizarDatosUsuario(usuario);
+        public void ActualizarUsuario(Usuarios usuario) => _repositorio.ActualizarDatosUsuario(usuario);
     }
 }

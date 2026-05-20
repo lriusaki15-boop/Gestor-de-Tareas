@@ -4,7 +4,7 @@ using GestorDeTareas.Infrastructure.Repositories;
 using GestorDeTareas.Infrastructure.Servicios;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using static GestorDeTareas.Dominio.Enums.Enumerados;
+
 
 var builder = WebApplication.CreateBuilder(args);
 // PARTE 1: registrar servicios
