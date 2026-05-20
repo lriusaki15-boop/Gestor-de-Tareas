@@ -1,4 +1,5 @@
-﻿using GestorDeTareas.Aplications.DTOs;
+﻿
+using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Infrastructure.Data;
 
 namespace GestorDeTareas.Infrastructure.Repositories
@@ -9,13 +10,13 @@ namespace GestorDeTareas.Infrastructure.Repositories
 
         public UsuariosRepositorio(GestorTareasContext context) => _context = context;
 
-        public void ActualizarDatosUsuario(UsuariosDto usuario)
+        public void ActualizarDatosUsuario(Usuarios usuario)
         {
             _context.Usuarios.Update(usuario);
             _context.SaveChanges();
         }
 
-        public void CrearUsuario(UsuariosDto usuario)
+        public void CrearUsuario(Usuarios usuario)
         {
             _context.Usuarios.Add(usuario);
             _context.SaveChanges();
@@ -27,9 +28,9 @@ namespace GestorDeTareas.Infrastructure.Repositories
             _context.Usuarios.Remove(usuario);
         }
 
-        public UsuariosDto? ObtenerUsuarioPorId(int id) => _context.Usuarios.FirstOrDefault(t => t.Id == id);
+        public Usuarios? ObtenerUsuarioPorId(int id) => _context.Usuarios.FirstOrDefault(t => t.Id == id);
 
 
-        public List<UsuariosDto> ObtenerTodos() => _context.Usuarios.ToList();
+        public List<Usuarios> ObtenerTodos() => _context.Usuarios.ToList();
     }
 }
