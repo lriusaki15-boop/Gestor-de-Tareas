@@ -22,7 +22,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
             var nuevoUsuario = new Usuarios
             {
                 Nombre = usuarioNuevo.Nombre,
-                Apellido = usuarioNuevo.Apellido,
+                Apellidos = usuarioNuevo.Apellidos,
                 Email = usuarioNuevo.Email,
                 ContraseniaHash = usuarioNuevo.ContraseniaHash,
                 Rango = usuarioNuevo.Rango
