@@ -9,7 +9,7 @@ namespace GestorDeTareas.Dominio.Entities
     {
         public long Id { get; set; }
         public string Nombre { get; set; }
-        public string Apellido { get; set; }
+        public string Apellidos { get; set; }
         public string Email { get; set; }
         public string ContraseniaHash { get; set; } = string.Empty;
         public TipoUsuario Rango { get; set; }
