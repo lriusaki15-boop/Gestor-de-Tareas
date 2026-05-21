@@ -1,4 +1,4 @@
-﻿using GestorDeTareas.Aplications.DTOs;
+﻿using GestorDeTareas.Aplications.DTOs.TareasDto;
 using GestorDeTareas.Dominio.Entities;
 
 namespace GestorDeTareas.Infrastructure.Repositories

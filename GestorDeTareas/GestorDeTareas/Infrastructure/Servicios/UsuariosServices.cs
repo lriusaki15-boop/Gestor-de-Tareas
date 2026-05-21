@@ -1,6 +1,8 @@
 ﻿
+using GestorDeTareas.Aplications.DTOs.UsuariosDto;
 using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Infrastructure.Repositories;
+using static GestorDeTareas.Dominio.Enums.Enumerados;
 namespace GestorDeTareas.Infrastructure.Servicios
 {
     public class UsuariosServices
@@ -16,9 +18,10 @@ namespace GestorDeTareas.Infrastructure.Servicios
 
         public Usuarios ObtenerDatosUsuario(int id) => _repositorio.ObtenerUsuarioPorId(id);
 
-        public Usuarios CrearUsuario(Usuarios usuario)
+        public Usuarios CrearUsuario(string nombre, string apellido, string email, TipoUsuario tipo)
         {
-            _repositorio.CrearUsuario(usuario);
+            var nuevoUsuario = new CrearUsuarioDto { nombre, apellido, email, tipo };
+            _repositorio.CrearUsuario(nuevoUsuario);
             return usuario;
         }
 

@@ -1,4 +1,5 @@
 ﻿using GestorDeTareas.Aplications.DTOs;
+using GestorDeTareas.Aplications.DTOs.UsuariosDto;
 using GestorDeTareas.Dominio.Entities;
 
 namespace GestorDeTareas.Infrastructure.Repositories
@@ -7,7 +8,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
     {
         List<Usuarios> ObtenerTodos();
         Usuarios? ObtenerUsuarioPorId(int id);
-        void CrearUsuario(Usuarios usuario);
+        void CrearUsuario(CrearUsuarioDto usuario);
         void ActualizarDatosUsuario(Usuarios usuario);
         void EliminarUsuario(int id);
     }

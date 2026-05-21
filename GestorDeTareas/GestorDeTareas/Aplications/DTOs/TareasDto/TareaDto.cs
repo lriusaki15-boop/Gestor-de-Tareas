@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using static GestorDeTareas.Dominio.Enums.Enumerados;
 
-namespace GestorDeTareas.Aplications.DTOs
+namespace GestorDeTareas.Aplications.DTOs.TareasDto
 {
     public class TareaDto
     {

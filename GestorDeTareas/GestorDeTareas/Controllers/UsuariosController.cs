@@ -1,6 +1,8 @@
-﻿using GestorDeTareas.Infrastructure.Servicios;
+﻿using GestorDeTareas.Aplications.DTOs.UsuariosDto;
+using GestorDeTareas.Infrastructure.Servicios;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static GestorDeTareas.Dominio.Enums.Enumerados;
 
 namespace GestorDeTareas.Controllers
 {
@@ -63,6 +65,17 @@ namespace GestorDeTareas.Controllers
         {
             var usuario = _servicio.ObtenerDatosUsuario(id);
             _servicio.ActualizarUsuario(usuario);
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Crea un Usuario nuevo.
+        /// </summary>
+        /// <returns>No devuelve nada ya que crea un usuario a no ser de que falle.</returns>
+        [HttpPut("CrearUsuario/{id}")]
+        public IActionResult CrearUsuario([FromBody] CrearUsuarioDto usuarioNuevo )
+        {
+            _servicio.CrearUsuario(usuarioNuevo);
             return NoContent();
         }
     }

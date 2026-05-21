@@ -1,4 +1,4 @@
-﻿using GestorDeTareas.Aplications.DTOs;
+﻿using GestorDeTareas.Aplications.DTOs.TareasDto;
 using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Infrastructure.Data;
 using GestorDeTareas.Infrastructure.Servicios;
