@@ -4,9 +4,9 @@ namespace GestorDeTareas.Aplications.DTOs.UsuariosDto
 {
     public class CrearUsuarioDto
     {
-        public string Nombre { get; private set; }
-        public string Apellido { get; private set; }
-        public string Email { get; private set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Email { get; set; }
         public string ContraseniaHash { get; set; }
         public TipoUsuario Rango { get; set; }
 

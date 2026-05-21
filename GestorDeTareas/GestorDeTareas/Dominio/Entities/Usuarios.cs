@@ -8,9 +8,9 @@ namespace GestorDeTareas.Dominio.Entities
     public class Usuarios
     {
         public long Id { get; set; }
-        public string Nombre { get; private set; }
-        public string Apellido { get; private set; }
-        public string Email { get; private set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Email { get; set; }
         public string ContraseniaHash { get; set; } = string.Empty;
         public TipoUsuario Rango { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿
+using GestorDeTareas.Aplications.DTOs.UsuariosDto;
 using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Infrastructure.Data;
 
@@ -16,9 +17,17 @@ namespace GestorDeTareas.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public void CrearUsuario(Usuarios usuario)
+        public void CrearUsuario(CrearUsuarioDto usuarioNuevo)
         {
-            _context.Usuarios.Add(usuario);
+            var nuevoUsuario = new Usuarios
+            {
+                Nombre = usuarioNuevo.Nombre,
+                Apellido = usuarioNuevo.Apellido,
+                Email = usuarioNuevo.Email,
+                ContraseniaHash = usuarioNuevo.ContraseniaHash,
+                Rango = usuarioNuevo.Rango
+            };
+            _context.Usuarios.Add(nuevoUsuario);
             _context.SaveChanges();
         }
 
