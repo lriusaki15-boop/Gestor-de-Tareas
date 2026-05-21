@@ -72,7 +72,7 @@ namespace GestorDeTareas.Controllers
         /// Crea un Usuario nuevo.
         /// </summary>
         /// <returns>No devuelve nada ya que crea un usuario a no ser de que falle.</returns>
-        [HttpPut("CrearUsuario/{id}")]
+        [HttpPost("CrearUsuario")]
         public IActionResult CrearUsuario([FromBody] CrearUsuarioDto usuarioNuevo )
         {
             _servicio.CrearUsuario(usuarioNuevo);
