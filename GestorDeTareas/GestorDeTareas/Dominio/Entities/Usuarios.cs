@@ -11,7 +11,7 @@ namespace GestorDeTareas.Dominio.Entities
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
         public string Email { get; set; }
-        public string ContraseniaHash { get; set; } = string.Empty;
+        public string Contrasenia { get; set; } = string.Empty;
         public TipoUsuario Rango { get; set; }
 
         public Usuarios()
@@ -24,7 +24,7 @@ namespace GestorDeTareas.Dominio.Entities
             this.Id = id;
             this.Nombre = nombre;
             this.Apellidos = apellidos;
-            this.ContraseniaHash = contrasenia;
+            this.Contrasenia = contrasenia;
             this.Rango = rango;
         }
     }

@@ -24,7 +24,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
                 Nombre = usuarioNuevo.Nombre,
                 Apellidos = usuarioNuevo.Apellidos,
                 Email = usuarioNuevo.Email,
-                ContraseniaHash = usuarioNuevo.ContraseniaHash,
+                Contrasenia = usuarioNuevo.Contrasenia,
                 Rango = usuarioNuevo.Rango
             };
             _context.Usuarios.Add(nuevoUsuario);

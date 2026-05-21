@@ -5,7 +5,7 @@ namespace GestorDeTareas.Aplications.DTOs.UsuariosDto
     public class LoginUsuarioDto
     {
         public string Email { get; private set; }
-        public string ContraseniaHash { get; set; }
+        public string Contrasenia { get; set; }
         public TipoUsuario Rango { get; set; }
 
         public LoginUsuarioDto() { }
@@ -13,7 +13,7 @@ namespace GestorDeTareas.Aplications.DTOs.UsuariosDto
         public LoginUsuarioDto(string email,string contrasenia, TipoUsuario rango)
         {
             this.Email = email;
-            this.ContraseniaHash = contrasenia;
+            this.Contrasenia = contrasenia;
             this.Rango = rango;
         }
     }
