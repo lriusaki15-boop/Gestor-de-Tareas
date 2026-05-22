@@ -24,9 +24,8 @@ namespace GestorDeTareas.Dominio.Entities
 
         }
 
-        public Tarea(int id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime? FechaFinTarea, PrioridadTarea prioridad, string? motivacionCancelacion, EstadoTarea estado, int usuarioId)
+        public Tarea(long id,string titulo, string descripcion,string responsable, DateTime FechaCreacion, DateTime? FechaFinTarea, PrioridadTarea prioridad, string? motivacionCancelacion, EstadoTarea estado, int usuarioId)
         {
-            if (string.IsNullOrWhiteSpace(titulo)) throw new ArgumentException("El título es obligatorio", nameof(titulo));
             this.Id = id;
             this.Titulo = titulo.Trim();
             this.Descripcion = descripcion?.Trim() ?? string.Empty;

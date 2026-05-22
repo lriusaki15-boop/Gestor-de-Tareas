@@ -1,20 +1,21 @@
-﻿using static GestorDeTareas.Dominio.Enums.Enumerados;
+﻿using System.ComponentModel.DataAnnotations;
+using static GestorDeTareas.Dominio.Enums.Enumerados;
 
 namespace GestorDeTareas.Aplications.DTOs.UsuariosDto
 {
     public class LoginUsuarioDto
     {
-        public string Email { get; private set; }
+        [Required, EmailAddress]
+        public string Email { get; set; }
+        [Required]
         public string Contrasenia { get; set; }
-        public TipoUsuario Rango { get; set; }
 
         public LoginUsuarioDto() { }
 
-        public LoginUsuarioDto(string email,string contrasenia, TipoUsuario rango)
+        public LoginUsuarioDto(string email,string contrasenia)
         {
             this.Email = email;
             this.Contrasenia = contrasenia;
-            this.Rango = rango;
         }
     }
 }

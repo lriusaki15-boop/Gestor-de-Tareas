@@ -63,8 +63,8 @@ namespace GestorDeTareas.Controllers
         /// Actualiza el estado de una tarea.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPut("ActualizarEstadoTarea/{id},{estado}")]
-        public IActionResult CompletarTarea(long id, EstadoTarea estado, string? motivoCancelacion)
+        [HttpPut("ActualizarEstadoTarea/{id}/{estado}")]
+        public IActionResult CompletarTarea(long id, EstadoTarea estado, [FromQuery] string? motivoCancelacion)
         {
             _servicio.ActualizarEstadosTarea(id, motivoCancelacion, estado);
             return NoContent();
@@ -75,7 +75,7 @@ namespace GestorDeTareas.Controllers
         /// Actualiza la Prioridad de una tarea.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPut("ActualizarPrioridadTarea/{id},{prioridad}")]
+        [HttpPut("ActualizarPrioridadTarea/{id}/{prioridad}")]
         public IActionResult ActualizaPrioridadTarea(long id, PrioridadTarea prioridad)
         {
             _servicio.ActualizarPrioridadTarea(id, prioridad);
