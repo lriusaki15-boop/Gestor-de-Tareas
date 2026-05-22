@@ -23,7 +23,7 @@ namespace GestorDeTareas.Controllers
         /// </summary>
         /// <returns>Devuelve la informacion de 1 tarea al completo.</returns>
         [HttpGet("ObtenerTareasPorID/{id}")]
-        public IActionResult ObtenerTareaPorId(int id)
+        public IActionResult ObtenerTareaPorId(long id)
         {
             var tarea = _servicio.ObtenerPorId(id);
 
@@ -53,7 +53,7 @@ namespace GestorDeTareas.Controllers
         /// </summary>
         /// <returns>No devuleve nada a no ser de que haya fallado.</returns>
         [HttpDelete("EliminarTarea/{id}")]
-        public IActionResult EliminarTarea(int id)
+        public IActionResult EliminarTarea(long id)
         {
             _servicio.EliminarTarea(id);
             return NoContent();
@@ -63,8 +63,8 @@ namespace GestorDeTareas.Controllers
         /// Actualiza el estado de una tarea.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPut("ActualizarEstadoTarea/{id}, {estado}")]
-        public IActionResult CompletarTarea(int id, EstadoTarea estado, string? motivoCancelacion)
+        [HttpPut("ActualizarEstadoTarea/{id},{estado}")]
+        public IActionResult CompletarTarea(long id, EstadoTarea estado, string? motivoCancelacion)
         {
             _servicio.ActualizarEstadosTarea(id, motivoCancelacion, estado);
             return NoContent();
@@ -75,8 +75,8 @@ namespace GestorDeTareas.Controllers
         /// Actualiza la Prioridad de una tarea.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
-        [HttpPut("ActualizarPrioridadTarea/{id}, {prioridad}")]
-        public IActionResult ActualizaPrioridadTarea(int id, PrioridadTarea prioridad)
+        [HttpPut("ActualizarPrioridadTarea/{id},{prioridad}")]
+        public IActionResult ActualizaPrioridadTarea(long id, PrioridadTarea prioridad)
         {
             _servicio.ActualizarPrioridadTarea(id, prioridad);
             return NoContent();

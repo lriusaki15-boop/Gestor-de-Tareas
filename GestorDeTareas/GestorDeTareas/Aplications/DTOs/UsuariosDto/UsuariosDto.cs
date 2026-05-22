@@ -4,7 +4,7 @@ namespace GestorDeTareas.Aplications.DTOs.UsuariosDto
 {
     public class UsuariosDto
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Nombre { get; private set; }
         public string Apellidos { get; private set; }
         public string Email { get; private set; }
@@ -13,7 +13,7 @@ namespace GestorDeTareas.Aplications.DTOs.UsuariosDto
 
         public UsuariosDto(){}
 
-        public UsuariosDto(int id, string nombre, string apellidos, string contrasenia, TipoUsuario rango)
+        public UsuariosDto(long id, string nombre, string apellidos, string contrasenia, TipoUsuario rango)
         {
             this.Id = id;
             this.Nombre = nombre;

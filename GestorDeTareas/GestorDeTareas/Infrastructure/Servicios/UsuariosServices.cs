@@ -16,7 +16,7 @@ namespace GestorDeTareas.Infrastructure.Servicios
 
         public List<Usuarios> ObtenerListaUsuarios() => _repositorio.ObtenerTodos();
 
-        public Usuarios ObtenerDatosUsuario(int id) => _repositorio.ObtenerUsuarioPorId(id);
+        public Usuarios ObtenerDatosUsuario(long id) => _repositorio.ObtenerUsuarioPorId(id);
 
         public CrearUsuarioDto CrearUsuario(CrearUsuarioDto nuevoUsuario)
         {
@@ -24,7 +24,7 @@ namespace GestorDeTareas.Infrastructure.Servicios
             return nuevoUsuario;
         }
 
-        public void EliminarUsuario(int id) => _repositorio.EliminarUsuario(id);
+        public void EliminarUsuario(long id) => _repositorio.EliminarUsuario(id);
 
         public void ActualizarUsuario(Usuarios usuario) => _repositorio.ActualizarDatosUsuario(usuario);
     }

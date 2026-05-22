@@ -10,7 +10,7 @@ namespace GestorDeTareas.Aplications.DTOs.TareasDto
 {
     public class TareaDto
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
         public string Responsable { get; set; }
@@ -24,7 +24,7 @@ namespace GestorDeTareas.Aplications.DTOs.TareasDto
 
         public TareaDto() { }
 
-        public TareaDto(int id, string titulo, string descripcion, string responsable, DateTime fechaCreacion, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion, string? subTareasId, int usuarioId)
+        public TareaDto(long id, string titulo, string descripcion, string responsable, DateTime fechaCreacion, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivacionCancelacion, string? subTareasId, int usuarioId)
         {
             this.Id = id;
             this.Titulo = titulo;
@@ -48,20 +48,6 @@ namespace GestorDeTareas.Aplications.DTOs.TareasDto
             this.Prioridad = prioridad;
             this.Estado = estado;
             this.UsuarioId = usuarioId;
-        }
-
-        public TareaDto(int id, string titulo, string descripcion, string responsable, DateTime fechaCreacion, DateTime? fechaFinTarea, PrioridadTarea prioridad, EstadoTarea estado, string? motivoCancelacion, int usuarioId)
-        {
-            Id = id;
-            Titulo = titulo;
-            Descripcion = descripcion;
-            Responsable = responsable;
-            FechaCreacion = fechaCreacion;
-            FechaFinTarea = fechaFinTarea;
-            Prioridad = prioridad;
-            Estado = estado;
-            MotivoCancelacion = motivoCancelacion;
-            UsuarioId = usuarioId;
         }
     }
 }

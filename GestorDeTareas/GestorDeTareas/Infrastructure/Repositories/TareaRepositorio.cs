@@ -33,7 +33,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public void Eliminar(int id)
+        public void Eliminar(long id)
         {
             var tarea = ObtenerPorId(id);
 
@@ -44,7 +44,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public Tarea? ObtenerPorId(int id) => _context.Tarea.FirstOrDefault(t => t.Id == id);
+        public Tarea? ObtenerPorId(long id) => _context.Tarea.FirstOrDefault(t => t.Id == id);
 
         public List<Tarea> ObtenerTodas() => _context.Tarea.ToList();
     }

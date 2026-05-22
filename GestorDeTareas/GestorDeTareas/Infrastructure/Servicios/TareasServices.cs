@@ -13,7 +13,7 @@ namespace GestorDeTareas.Infrastructure.Servicios
         public TareasServices(ITareaRepositorio repositorio) => _repositorio = repositorio;
 
         public List<Tarea> ObtenerTodas() => _repositorio.ObtenerTodas();
-        public Tarea? ObtenerPorId(int id) => _repositorio.ObtenerPorId(id);
+        public Tarea? ObtenerPorId(long id) => _repositorio.ObtenerPorId(id);
 
         public CrearTareaDto Crear(CrearTareaDto tareaDatos)
         {
@@ -21,8 +21,8 @@ namespace GestorDeTareas.Infrastructure.Servicios
             return tareaDatos;
         }
 
-        public void EliminarTarea(int id)=> _repositorio.Eliminar(id);
-        public void ActualizarEstadosTarea(int id, string? motivoCancelacion, EstadoTarea estado)
+        public void EliminarTarea(long id)=> _repositorio.Eliminar(id);
+        public void ActualizarEstadosTarea(long id, string? motivoCancelacion, EstadoTarea estado)
         {
             var tarea = _repositorio.ObtenerPorId(id) ?? throw new KeyNotFoundException($"No existe la tarea con Id {id}");
             if (estado == EstadoTarea.Completada)
@@ -44,7 +44,7 @@ namespace GestorDeTareas.Infrastructure.Servicios
             }
         }
 
-        public void ActualizarPrioridadTarea(int id, PrioridadTarea prioridad)
+        public void ActualizarPrioridadTarea(long id, PrioridadTarea prioridad)
         {
             var tarea = _repositorio.ObtenerPorId(id) ?? throw new KeyNotFoundException($"No existe la tarea con Id {id}");
             if (prioridad == PrioridadTarea.Baja)

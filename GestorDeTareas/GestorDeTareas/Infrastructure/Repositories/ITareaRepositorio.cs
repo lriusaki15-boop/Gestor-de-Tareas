@@ -6,9 +6,9 @@ namespace GestorDeTareas.Infrastructure.Repositories
     public interface ITareaRepositorio
     {
         List<Tarea>ObtenerTodas();
-        Tarea? ObtenerPorId(int id);
+        Tarea? ObtenerPorId(long id);
         void Agregar(CrearTareaDto tarea);
         void Actualizar(Tarea tarea);
-        void Eliminar(int id);
+        void Eliminar(long id);
     }
 }

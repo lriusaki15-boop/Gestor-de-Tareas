@@ -19,7 +19,7 @@ namespace GestorDeTareas.Controllers
         /// </summary>
         /// <returns>Devuelve la informacion de 1 Usuario.</returns>
         [HttpGet("ObtenerUsuarioPorID/{id}")]
-        public IActionResult ObtenerUsuarioPorId(int id)
+        public IActionResult ObtenerUsuarioPorId(long id)
         {
             var usuario = _servicio.ObtenerDatosUsuario(id);
 
@@ -50,7 +50,7 @@ namespace GestorDeTareas.Controllers
         /// <returns>Elimina a un Usuario.</returns>
         [HttpDelete("EliminarUsuario/{id}")]
         [Authorize(Roles = "Admin")]
-        public IActionResult EliminarUsuario(int id)
+        public IActionResult EliminarUsuario(long id)
         {
             _servicio.EliminarUsuario(id);
             return NoContent();
@@ -61,7 +61,7 @@ namespace GestorDeTareas.Controllers
         /// </summary>
         /// <returns>Actualiza los datos de un Usuario.</returns>
         [HttpPut("ActualizarDatosUsuario/{id}")]
-        public IActionResult ActualizarDatosUsuario(int id)
+        public IActionResult ActualizarDatosUsuario(long id)
         {
             var usuario = _servicio.ObtenerDatosUsuario(id);
             _servicio.ActualizarUsuario(usuario);

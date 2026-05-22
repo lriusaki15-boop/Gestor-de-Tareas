@@ -7,9 +7,9 @@ namespace GestorDeTareas.Infrastructure.Repositories
     public interface IUsuariosRepositorio
     {
         List<Usuarios> ObtenerTodos();
-        Usuarios? ObtenerUsuarioPorId(int id);
+        Usuarios? ObtenerUsuarioPorId(long id);
         void CrearUsuario(CrearUsuarioDto usuario);
         void ActualizarDatosUsuario(Usuarios usuario);
-        void EliminarUsuario(int id);
+        void EliminarUsuario(long id);
     }
 }

@@ -31,7 +31,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public void EliminarUsuario(int id)
+        public void EliminarUsuario(long id)
         {
             var usuario = ObtenerUsuarioPorId(id);
             if (usuario is null) return;
@@ -40,7 +40,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public Usuarios? ObtenerUsuarioPorId(int id) => _context.Usuarios.FirstOrDefault(t => t.Id == id);
+        public Usuarios? ObtenerUsuarioPorId(long id) => _context.Usuarios.FirstOrDefault(t => t.Id == id);
 
 
         public List<Usuarios> ObtenerTodos() => _context.Usuarios.ToList();

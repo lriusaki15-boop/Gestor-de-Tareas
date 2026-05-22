@@ -19,7 +19,7 @@ namespace GestorDeTareas.Dominio.Entities
 
         }
 
-        public Usuarios(int id, string nombre, string apellidos, string contrasenia, TipoUsuario rango)
+        public Usuarios(long id, string nombre, string apellidos, string contrasenia, TipoUsuario rango)
         {
             this.Id = id;
             this.Nombre = nombre;
