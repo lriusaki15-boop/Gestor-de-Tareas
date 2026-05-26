@@ -28,7 +28,7 @@ namespace GestorDeTareas.Controllers
         [AllowAnonymous]
         public IActionResult Login([FromBody] LoginUsuarioDto dto)
         {
-            var resultado = _autorizacionService;
+            var resultado = _autorizacionService.Login(dto);
             if (resultado == null)
                 return Unauthorized("Credenciales incorrectas");
             return Ok(resultado);

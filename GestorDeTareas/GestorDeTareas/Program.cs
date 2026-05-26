@@ -5,6 +5,7 @@ using GestorDeTareas.Infrastructure.Servicios;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
 using System.Reflection;
 using System.Text;
 
@@ -30,6 +31,8 @@ builder.Services.AddScoped<ITareaRepositorio, TareaRepositorio>();
 builder.Services.AddScoped<UsuariosServices>();
 builder.Services.AddScoped<IUsuariosRepositorio, UsuariosRepositorio>();
 
+builder.Services.AddScoped<AutorizacionServicio>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 .AddJwtBearer(options =>
 {
@@ -45,6 +48,32 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     Encoding.UTF8.GetBytes(builder.Configuration["Jwt:ClaveSecreta"]!))
     };
 });
+//Que se vea que he hecho todo lo necesario para meter seguridad en el swaguer
+//builder.Services.AddSwaggerGen(options =>
+//{
+//    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+//    {
+//        Name = "Authorization",
+//        Type = SecuritySchemeType.Http,
+//        Scheme = "Bearer",
+//        In = ParameterLocation.Header,
+//        Description = "Introduce el token JWT: Bearer {token}"
+//    });
+
+//    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+//    {
+//        {
+//            new OpenApiSecurityScheme
+//        {
+//            Reference = new OpenApiReference
+//        {
+//            Type = ReferenceType.SecurityScheme,
+//            Id = "Bearer"
+//        }},
+//            Array.Empty<string>()
+//        }
+//    });
+//});
 
 var app = builder.Build();
 
