@@ -8,6 +8,7 @@ namespace GestorDeTareas.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class UsuariosController :ControllerBase
     {
         private readonly UsuariosServices _servicio;

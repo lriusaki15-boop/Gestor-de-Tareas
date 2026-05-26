@@ -24,7 +24,7 @@ namespace GestorDeTareas.Aplications.DTOs.UsuariosDto
         {
             this.Nombre = nombre;
             this.Apellidos = apellidos;
-            this.Contrasenia = BCrypt.Net.BCrypt.HashPassword(contrasenia);
+            this.Contrasenia = contrasenia;
             this.Rango = rango;
         }
     }

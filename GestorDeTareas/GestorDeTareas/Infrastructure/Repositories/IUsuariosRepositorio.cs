@@ -8,7 +8,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
     {
         List<Usuarios> ObtenerTodos();
         Usuarios? ObtenerUsuarioPorId(long id);
-        Usuarios? LoginUsuario();
+        Usuarios? ObtenerPorEmail(string email);
         void CrearUsuario(CrearUsuarioDto usuario);
         void ActualizarDatosUsuario(Usuarios usuario);
         void EliminarUsuario(long id);

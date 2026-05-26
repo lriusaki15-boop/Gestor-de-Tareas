@@ -12,7 +12,7 @@ namespace GestorDeTareas.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class TareasController : ControllerBase
     {
         private readonly TareasServices _servicio;

@@ -24,7 +24,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
                 Nombre = usuarioNuevo.Nombre,
                 Apellidos = usuarioNuevo.Apellidos,
                 Email = usuarioNuevo.Email,
-                Contrasenia = usuarioNuevo.Contrasenia,
+                Contrasenia = BCrypt.Net.BCrypt.HashPassword(usuarioNuevo.Contrasenia),
                 Rango = usuarioNuevo.Rango
             };
             _context.Usuarios.Add(nuevoUsuario);
@@ -44,5 +44,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
 
 
         public List<Usuarios> ObtenerTodos() => _context.Usuarios.ToList();
+
+        public Usuarios? ObtenerPorEmail(string email) => _context.Usuarios.FirstOrDefault(t => t.Email == email);
     }
 }

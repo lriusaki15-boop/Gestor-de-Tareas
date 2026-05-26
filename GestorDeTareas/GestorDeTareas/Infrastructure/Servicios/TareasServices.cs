@@ -47,21 +47,9 @@ namespace GestorDeTareas.Infrastructure.Servicios
         public void ActualizarPrioridadTarea(long id, PrioridadTarea prioridad)
         {
             var tarea = _repositorio.ObtenerPorId(id) ?? throw new KeyNotFoundException($"No existe la tarea con Id {id}");
-            if (prioridad == PrioridadTarea.Baja)
-            {
-                tarea.Prioridad = prioridad;
-                _repositorio.Actualizar(tarea);
-            }
-            if (prioridad == PrioridadTarea.Media)
-            {
-                tarea.Prioridad = prioridad;
-                _repositorio.Actualizar(tarea);
-            }
-            if (prioridad == PrioridadTarea.Alta)
-            {
-                tarea.Prioridad = prioridad;
-                _repositorio.Actualizar(tarea);
-            }
+            
+            tarea.Prioridad = prioridad;
+            _repositorio.Actualizar(tarea);
 
             _repositorio.Actualizar(tarea);
         }
