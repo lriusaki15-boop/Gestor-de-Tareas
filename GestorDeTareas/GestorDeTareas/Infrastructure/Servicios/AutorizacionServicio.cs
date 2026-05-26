@@ -21,6 +21,24 @@ namespace GestorDeTareas.Infrastructure.Servicios
             _config = config;
         }
 
+        public async Task<ClaveResponseDto?> Registrar(CrearUsuarioDto datosDto)
+        {
+            if (_repositorio.ObtenerPorEmail(datosDto.Email) != null)
+                return null; 
+
+            var usuario = new Usuarios
+            {
+                Nombre = datosDto.Nombre,
+                Apellidos = datosDto.Apellidos,
+                Email = datosDto.Email,
+                Contrasenia = BCrypt.Net.BCrypt.HashPassword(datosDto.Contrasenia),
+                Rango = TipoUsuario.Cliente
+            };
+            _repositorio.CrearUsuario(usuario);
+
+            return GenerarClave(usuario);
+        }
+
         public ClaveResponseDto? Login(LoginUsuarioDto dto)
         {
             var usuario = _repositorio.ObtenerPorEmail(dto.Email);

@@ -18,12 +18,6 @@ namespace GestorDeTareas.Infrastructure.Servicios
 
         public Usuarios ObtenerDatosUsuario(long id) => _repositorio.ObtenerUsuarioPorId(id);
 
-        public CrearUsuarioDto CrearUsuario(CrearUsuarioDto nuevoUsuario)
-        {
-            _repositorio.CrearUsuario(nuevoUsuario);
-            return nuevoUsuario;
-        }
-
         public void EliminarUsuario(long id) => _repositorio.EliminarUsuario(id);
 
         public void ActualizarUsuario(Usuarios usuario) => _repositorio.ActualizarDatosUsuario(usuario);

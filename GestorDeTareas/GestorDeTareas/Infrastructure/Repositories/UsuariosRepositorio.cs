@@ -17,17 +17,9 @@ namespace GestorDeTareas.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public void CrearUsuario(CrearUsuarioDto usuarioNuevo)
+        public void CrearUsuario(Usuarios usuarioNuevo)
         {
-            var nuevoUsuario = new Usuarios
-            {
-                Nombre = usuarioNuevo.Nombre,
-                Apellidos = usuarioNuevo.Apellidos,
-                Email = usuarioNuevo.Email,
-                Contrasenia = BCrypt.Net.BCrypt.HashPassword(usuarioNuevo.Contrasenia),
-                Rango = usuarioNuevo.Rango
-            };
-            _context.Usuarios.Add(nuevoUsuario);
+            _context.Usuarios.Add(usuarioNuevo);
             _context.SaveChanges();
         }
 

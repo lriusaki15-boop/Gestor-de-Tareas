@@ -12,6 +12,17 @@ namespace GestorDeTareas.Controllers
         public AutorizacionController(AutorizacionServicio authService)
         => _autorizacionService = authService;
 
+        // POST /api/auth/registro
+        [HttpPost("registro")]
+        [AllowAnonymous]
+        public IActionResult Registro([FromBody] CrearUsuarioDto crearUsuarioDatos)
+        {
+            var resultado = _autorizacionService.Registrar(crearUsuarioDatos);
+            if (resultado == null)
+                return Conflict("El email ya está registrado");
+            return Ok(resultado);
+        }
+
         // POST /api/auth/login
         [HttpPost("login")]
         [AllowAnonymous]

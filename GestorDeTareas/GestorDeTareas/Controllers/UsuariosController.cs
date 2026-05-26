@@ -68,16 +68,5 @@ namespace GestorDeTareas.Controllers
             _servicio.ActualizarUsuario(usuario);
             return NoContent();
         }
-
-        /// <summary>
-        /// Crea un Usuario nuevo.
-        /// </summary>
-        /// <returns>No devuelve nada ya que crea un usuario a no ser de que falle.</returns>
-        [HttpPost("CrearUsuario")]
-        public IActionResult CrearUsuario([FromBody] CrearUsuarioDto usuarioNuevo )
-        {
-            _servicio.CrearUsuario(usuarioNuevo);
-            return NoContent();
-        }
     }
 }
