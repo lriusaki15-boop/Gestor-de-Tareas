@@ -90,17 +90,17 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseCors("Angular");
-app.UseAuthentication(); 
+app.UseAuthentication();
+app.UseAuthorization();
 
 // PARTE 2: configurar el pipeline de peticiones
 //if (app.Environment.IsDevelopment())
 //{
-    app.UseSwagger();
+app.UseSwagger();
     app.UseSwaggerUI();
 //}
 
 app.UseHttpsRedirection();
-app.UseAuthorization();
 app.MapControllers();
 
 app.Run(); // arranca el servidor y se queda escuchando

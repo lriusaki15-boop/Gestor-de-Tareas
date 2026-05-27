@@ -21,7 +21,7 @@ namespace GestorDeTareas.Infrastructure.Servicios
             _config = config;
         }
 
-        public async Task<ClaveResponseDto?> Registrar(CrearUsuarioDto datosDto)
+        public ClaveResponseDto? Registrar(CrearUsuarioDto datosDto)
         {
             if (_repositorio.ObtenerPorEmail(datosDto.Email) != null)
                 return null; 
