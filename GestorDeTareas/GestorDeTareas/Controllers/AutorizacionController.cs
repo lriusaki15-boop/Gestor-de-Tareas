@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GestorDeTareas.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class AutorizacionController : ControllerBase
     {
         private readonly AutorizacionServicio _autorizacionService;
@@ -15,7 +17,7 @@ namespace GestorDeTareas.Controllers
         // POST /api/auth/registro
         [HttpPost("registro")]
         [AllowAnonymous]
-        public IActionResult Registro([FromBody] CrearUsuarioDto crearUsuarioDatos)
+        public IActionResult Registrar([FromBody] CrearUsuarioDto crearUsuarioDatos)
         {
             var resultado = _autorizacionService.Registrar(crearUsuarioDatos);
             if (resultado == null)

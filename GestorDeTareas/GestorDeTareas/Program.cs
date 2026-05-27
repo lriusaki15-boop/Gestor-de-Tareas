@@ -91,7 +91,6 @@ var app = builder.Build();
 
 app.UseCors("Angular");
 app.UseAuthentication(); 
-app.UseAuthorization();
 
 // PARTE 2: configurar el pipeline de peticiones
 //if (app.Environment.IsDevelopment())
