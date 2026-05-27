@@ -2,6 +2,7 @@
 using GestorDeTareas.Aplications.DTOs.UsuariosDto;
 using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 using static GestorDeTareas.Dominio.Enums.Enumerados;
 namespace GestorDeTareas.Infrastructure.Servicios
 {
@@ -17,6 +18,8 @@ namespace GestorDeTareas.Infrastructure.Servicios
         public List<Usuarios> ObtenerListaUsuarios() => _repositorio.ObtenerTodos();
 
         public Usuarios ObtenerDatosUsuario(long id) => _repositorio.ObtenerUsuarioPorId(id);
+
+        public Usuarios? ObtenerPorEmail(string email) => _repositorio.ObtenerPorEmail(email);
 
         public void EliminarUsuario(long id) => _repositorio.EliminarUsuario(id);
 

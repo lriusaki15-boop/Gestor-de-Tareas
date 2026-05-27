@@ -48,6 +48,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     Encoding.UTF8.GetBytes(builder.Configuration["Jwt:ClaveSecreta"]!))
     };
 });
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Angular",
+        policy =>
+        {
+            policy
+                .WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 //Que se vea que he hecho todo lo necesario para meter seguridad en el swaguer
 //builder.Services.AddSwaggerGen(options =>
 //{
@@ -77,13 +89,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
+app.UseCors("Angular");
 app.UseAuthentication(); 
 app.UseAuthorization();
 
 // PARTE 2: configurar el pipeline de peticiones
 //if (app.Environment.IsDevelopment())
 //{
-app.UseSwagger();
+    app.UseSwagger();
     app.UseSwaggerUI();
 //}
 

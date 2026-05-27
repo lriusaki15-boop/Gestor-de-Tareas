@@ -46,6 +46,21 @@ namespace GestorDeTareas.Controllers
         }
 
         /// <summary>
+        /// Obtiene el Usuario por su correo electronico.
+        /// </summary>
+        /// <returns>Devuelve la informacion de un Usuario por su Email.</returns>
+        [HttpGet("ObtenerUsuarioPorEmail/{email}")]
+        public IActionResult ObtenerUsuarioPorEmail(string email)
+        {
+            var usuario = _servicio.ObtenerPorEmail(email);
+
+            if (usuario == null)
+                return NotFound();
+
+            return Ok(usuario);
+        }
+
+        /// <summary>
         /// Elimina a un Usuario.
         /// </summary>
         /// <returns>Elimina a un Usuario.</returns>
