@@ -3,6 +3,7 @@ using GestorDeTareas.Aplications.DTOs.UsuariosDto;
 using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Dominio.Enums;
 using GestorDeTareas.Infrastructure.Data;
+using static GestorDeTareas.Dominio.Enums.Enumerados;
 
 namespace GestorDeTareas.Infrastructure.Repositories
 {
@@ -12,8 +13,15 @@ namespace GestorDeTareas.Infrastructure.Repositories
 
         public UsuariosRepositorio(GestorTareasContext context) => _context = context;
 
-        public void ActualizarDatosUsuario(Usuarios usuario)
+        public void ActualizarDatosUsuario(UsuariosDto datosUsuario)
         {
+            var usuario = new Usuarios
+            {
+                Nombre = datosUsuario.Nombre,
+                Apellidos = datosUsuario.Apellidos,
+                Email = datosUsuario.Email,
+                Rango = datosUsuario.Rango
+            };
             _context.Usuarios.Update(usuario);
             _context.SaveChanges();
         }
@@ -54,5 +62,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
         public List<UsuariosDto> ObtenerTodos() => _context.Usuarios.Select(t => new UsuariosDto {Id = t.Id, Nombre = t.Nombre, Apellidos = t.Apellidos, Email = t.Email, Rango = t.Rango}).ToList();
 
         public Usuarios ObtenerPorEmail(string email) => _context.Usuarios.FirstOrDefault(d => d.Email == email);
+
+        public List<UsuariosDto>? ObtenerPorDatosUsuario(string? nombre, string? apellidos, string? email, TipoUsuario? tipoUsuario) => _context.Usuarios.Where(t => t.Nombre == nombre && t.Apellidos == apellidos && t.Email == email && t.Rango == tipoUsuario).Select(t => new UsuariosDto {Id = t.Id, Nombre = t.Nombre, Apellidos = t.Apellidos, Email = t.Email, Rango = t.Rango}).ToList();
     }
 }

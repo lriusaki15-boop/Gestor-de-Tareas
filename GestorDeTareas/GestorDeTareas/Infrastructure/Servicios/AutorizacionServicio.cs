@@ -26,16 +26,16 @@ namespace GestorDeTareas.Infrastructure.Servicios
             if (_repositorio.ObtenerPorEmail(datosDto.Email) != null)
                 return null;
 
-            var contra = BCrypt.Net.BCrypt.HashPassword(datosDto.Contrasenia);
+            var contraseniaHas = BCrypt.Net.BCrypt.HashPassword(datosDto.Contrasenia);
 
-            datosDto.Contrasenia = contra;
+            datosDto.Contrasenia = contraseniaHas;
 
             var usuario = new Usuarios
             {
                 Nombre = datosDto.Nombre,
                 Apellidos = datosDto.Apellidos,
                 Email = datosDto.Email,
-                Contrasenia = BCrypt.Net.BCrypt.HashPassword(datosDto.Contrasenia),
+                Contrasenia = contraseniaHas,
                 Rango = TipoUsuario.Cliente
             };
             _repositorio.CrearUsuario(datosDto);

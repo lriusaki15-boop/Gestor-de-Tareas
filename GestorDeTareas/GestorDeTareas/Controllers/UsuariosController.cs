@@ -1,4 +1,5 @@
 ﻿using GestorDeTareas.Aplications.DTOs.UsuariosDto;
+using GestorDeTareas.Dominio.Enums;
 using GestorDeTareas.Infrastructure.Servicios;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -53,6 +54,21 @@ namespace GestorDeTareas.Controllers
         public IActionResult ObtenerUsuarioPorEmail(string email)
         {
             var usuario = _servicio.ObtenerPorEmail(email);
+
+            if (usuario == null)
+                return NotFound();
+
+            return Ok(usuario);
+        }
+
+        /// <summary>
+        /// Obtiene los datos uno o varios usuarios segun porque datos se le pasen Usuario.
+        /// </summary>
+        /// <returns>Devuelve la informacion de 1 o varios Usuarios.</returns>
+        [HttpGet("ObtenerUsuarioPorID")]
+        public IActionResult ObtenerPorDatosUsuario(string? nombre, string? apellidos, string? email, TipoUsuario? tipoUsuario)
+        {
+            var usuario = _servicio.ObtenerPorDatosUsuario(nombre, apellidos, email, tipoUsuario);
 
             if (usuario == null)
                 return NotFound();

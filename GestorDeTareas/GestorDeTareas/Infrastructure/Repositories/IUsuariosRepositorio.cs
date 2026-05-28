@@ -10,7 +10,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
         List<UsuariosDto>? ObtenerTodos();
         UsuariosDto? ObtenerUsuarioPorId(long id);
         Usuarios? ObtenerPorEmail(string email);
-        UsuariosDto? ObtenerPorDatos(string nombre, string apellidos, string email, TipoUsuario tipoUsuario);
+        List<UsuariosDto>? ObtenerPorDatosUsuario(string? nombre, string? apellidos, string? email, TipoUsuario? tipoUsuario);
         void CrearUsuario(CrearUsuarioDto usuario);
         void ActualizarDatosUsuario(UsuariosDto usuario);
         void EliminarUsuario(long id);
