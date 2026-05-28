@@ -53,6 +53,6 @@ namespace GestorDeTareas.Infrastructure.Repositories
 
         public List<UsuariosDto> ObtenerTodos() => _context.Usuarios.Select(t => new UsuariosDto {Id = t.Id, Nombre = t.Nombre, Apellidos = t.Apellidos, Email = t.Email, Rango = t.Rango}).ToList();
 
-        public UsuariosDto ObtenerPorEmail(string email) => _context.Usuarios.Select(t => new UsuariosDto { Id = t.Id, Nombre = t.Nombre, Apellidos = t.Apellidos, Email = t.Email, Rango = t.Rango }).FirstOrDefault(d => d.Email == email);
+        public Usuarios ObtenerPorEmail(string email) => _context.Usuarios.FirstOrDefault(d => d.Email == email);
     }
 }

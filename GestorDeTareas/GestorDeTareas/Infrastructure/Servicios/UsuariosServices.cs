@@ -1,9 +1,6 @@
-﻿
-using GestorDeTareas.Aplications.DTOs.UsuariosDto;
+﻿using GestorDeTareas.Aplications.DTOs.UsuariosDto;
 using GestorDeTareas.Dominio.Entities;
 using GestorDeTareas.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
-using static GestorDeTareas.Dominio.Enums.Enumerados;
 namespace GestorDeTareas.Infrastructure.Servicios
 {
     public class UsuariosServices
