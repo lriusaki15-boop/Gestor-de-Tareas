@@ -1,16 +1,18 @@
 ﻿using GestorDeTareas.Aplications.DTOs;
 using GestorDeTareas.Aplications.DTOs.UsuariosDto;
 using GestorDeTareas.Dominio.Entities;
+using static GestorDeTareas.Dominio.Enums.Enumerados;
 
 namespace GestorDeTareas.Infrastructure.Repositories
 {
     public interface IUsuariosRepositorio
     {
-        List<Usuarios> ObtenerTodos();
-        Usuarios? ObtenerUsuarioPorId(long id);
+        List<UsuariosDto>? ObtenerTodos();
+        UsuariosDto? ObtenerUsuarioPorId(long id);
         Usuarios? ObtenerPorEmail(string email);
-        void CrearUsuario(Usuarios usuario);
-        void ActualizarDatosUsuario(Usuarios usuario);
+        UsuariosDto? ObtenerPorDatos(string nombre, string apellidos, string email, TipoUsuario tipoUsuario);
+        void CrearUsuario(CrearUsuarioDto usuario);
+        void ActualizarDatosUsuario(UsuariosDto usuario);
         void EliminarUsuario(long id);
     }
 }

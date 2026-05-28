@@ -1,6 +1,7 @@
 ﻿
 using GestorDeTareas.Aplications.DTOs.UsuariosDto;
 using GestorDeTareas.Dominio.Entities;
+using GestorDeTareas.Dominio.Enums;
 using GestorDeTareas.Infrastructure.Data;
 
 namespace GestorDeTareas.Infrastructure.Repositories
@@ -17,9 +18,17 @@ namespace GestorDeTareas.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public void CrearUsuario(Usuarios usuarioNuevo)
+        public void CrearUsuario(CrearUsuarioDto usuarioNuevoDatos)
         {
-            _context.Usuarios.Add(usuarioNuevo);
+            var nuevoUsuario = new Usuarios
+            {
+                Nombre = usuarioNuevoDatos.Nombre,
+                Apellidos = usuarioNuevoDatos.Apellidos,
+                Email = usuarioNuevoDatos.Email,
+                Contrasenia = usuarioNuevoDatos.Contrasenia,
+                Rango = usuarioNuevoDatos.Rango
+            };
+            _context.Usuarios.Add(nuevoUsuario);
             _context.SaveChanges();
         }
 
@@ -28,15 +37,22 @@ namespace GestorDeTareas.Infrastructure.Repositories
             var usuario = ObtenerUsuarioPorId(id);
             if (usuario is null) return;
 
-            _context.Usuarios.Remove(usuario);
+            var usuarioEliminar = new Usuarios
+            {
+                Id = usuario.Id,
+                Nombre = usuario.Nombre,
+                Apellidos = usuario.Apellidos,
+                Email = usuario.Email,
+                Rango = usuario.Rango
+            };
+            _context.Usuarios.Remove(usuarioEliminar);
             _context.SaveChanges();
         }
 
-        public Usuarios? ObtenerUsuarioPorId(long id) => _context.Usuarios.FirstOrDefault(t => t.Id == id);
+        public UsuariosDto? ObtenerUsuarioPorId(long id) => _context.Usuarios.Select(t => new UsuariosDto { Id = t.Id, Nombre = t.Nombre, Apellidos = t.Apellidos, Email = t.Email, Rango = t.Rango }).FirstOrDefault(t => t.Id == id);
 
+        public List<UsuariosDto> ObtenerTodos() => _context.Usuarios.Select(t => new UsuariosDto {Id = t.Id, Nombre = t.Nombre, Apellidos = t.Apellidos, Email = t.Email, Rango = t.Rango}).ToList();
 
-        public List<Usuarios> ObtenerTodos() => _context.Usuarios.ToList();
-
-        public Usuarios? ObtenerPorEmail(string email) => _context.Usuarios.FirstOrDefault(t => t.Email == email);
+        public UsuariosDto ObtenerPorEmail(string email) => _context.Usuarios.Select(t => new UsuariosDto { Id = t.Id, Nombre = t.Nombre, Apellidos = t.Apellidos, Email = t.Email, Rango = t.Rango }).FirstOrDefault(d => d.Email == email);
     }
 }

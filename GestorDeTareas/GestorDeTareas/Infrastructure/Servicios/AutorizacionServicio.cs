@@ -24,7 +24,11 @@ namespace GestorDeTareas.Infrastructure.Servicios
         public ClaveResponseDto? Registrar(CrearUsuarioDto datosDto)
         {
             if (_repositorio.ObtenerPorEmail(datosDto.Email) != null)
-                return null; 
+                return null;
+
+            var contra = BCrypt.Net.BCrypt.HashPassword(datosDto.Contrasenia);
+
+            datosDto.Contrasenia = contra;
 
             var usuario = new Usuarios
             {
@@ -34,7 +38,7 @@ namespace GestorDeTareas.Infrastructure.Servicios
                 Contrasenia = BCrypt.Net.BCrypt.HashPassword(datosDto.Contrasenia),
                 Rango = TipoUsuario.Cliente
             };
-            _repositorio.CrearUsuario(usuario);
+            _repositorio.CrearUsuario(datosDto);
 
             return GenerarClave(usuario);
         }

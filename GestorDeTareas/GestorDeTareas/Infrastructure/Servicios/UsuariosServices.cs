@@ -15,14 +15,14 @@ namespace GestorDeTareas.Infrastructure.Servicios
             _repositorio = repositorio;
         }
 
-        public List<Usuarios> ObtenerListaUsuarios() => _repositorio.ObtenerTodos();
+        public List<UsuariosDto>? ObtenerListaUsuarios() => _repositorio.ObtenerTodos();
 
-        public Usuarios ObtenerDatosUsuario(long id) => _repositorio.ObtenerUsuarioPorId(id);
+        public UsuariosDto? ObtenerDatosUsuario(long id) => _repositorio.ObtenerUsuarioPorId(id);
 
         public Usuarios? ObtenerPorEmail(string email) => _repositorio.ObtenerPorEmail(email);
 
         public void EliminarUsuario(long id) => _repositorio.EliminarUsuario(id);
 
-        public void ActualizarUsuario(Usuarios usuario) => _repositorio.ActualizarDatosUsuario(usuario);
+        public void ActualizarUsuario(UsuariosDto usuario) => _repositorio.ActualizarDatosUsuario(usuario);
     }
 }

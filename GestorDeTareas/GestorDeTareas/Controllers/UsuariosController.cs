@@ -76,6 +76,7 @@ namespace GestorDeTareas.Controllers
         /// Actualiza los datos de un Usuario.
         /// </summary>
         /// <returns>Actualiza los datos de un Usuario.</returns>
+        //Hay que actualizar bien al Usuario.
         [HttpPut("ActualizarDatosUsuario/{id}")]
         public IActionResult ActualizarDatosUsuario(long id)
         {
