@@ -22,6 +22,8 @@ namespace GestorDeTareas.Infrastructure.Servicios
 
         public Usuarios ObtenerPorLogin(string email, string contrasenia) => _repositorio.ObtenerPorLogin(email, contrasenia);
 
+        public Usuarios ObtenerPorEmail(string email) => _repositorio.ObtenerPorEmail(email);
+
         public void EliminarUsuario(long id) => _repositorio.EliminarUsuario(id);
 
         public void ActualizarUsuario(UsuariosDto usuario) => _repositorio.ActualizarDatosUsuario(usuario);
