@@ -47,13 +47,13 @@ namespace GestorDeTareas.Controllers
         }
 
         /// <summary>
-        /// Obtiene el Usuario por su correo electronico.
+        /// Obtiene el Usuario por su correo electronico y contraseña.
         /// </summary>
-        /// <returns>Devuelve la informacion de un Usuario por su Email.</returns>
-        [HttpGet("ObtenerUsuarioPorEmail/{email}")]
-        public IActionResult ObtenerUsuarioPorEmail(string email)
+        /// <returns>Devuelve la informacion de un Usuario por su email y contraseñia.</returns>
+        [HttpGet("ObtenerUsuarioPorLogin/{email},{contasenia}")]
+        public IActionResult ObtenerUsuarioPorLogin(string email, string contrasenia)
         {
-            var usuario = _servicio.ObtenerPorEmail(email);
+            var usuario = _servicio.ObtenerPorLogin(email, contrasenia);
 
             if (usuario == null)
                 return NotFound();

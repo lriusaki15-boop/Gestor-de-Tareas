@@ -60,6 +60,8 @@ builder.Services.AddCors(options =>
                 .AllowAnyMethod();
         });
 });
+
+builder.Services.AddAuthorization();
 //Que se vea que he hecho todo lo necesario para meter seguridad en el swaguer
 //builder.Services.AddSwaggerGen(options =>
 //{
@@ -96,7 +98,7 @@ app.UseAuthorization();
 // PARTE 2: configurar el pipeline de peticiones
 //if (app.Environment.IsDevelopment())
 //{
-app.UseSwagger();
+    app.UseSwagger();
     app.UseSwaggerUI();
 //}
 

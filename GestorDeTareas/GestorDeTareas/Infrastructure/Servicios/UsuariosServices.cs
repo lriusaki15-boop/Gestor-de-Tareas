@@ -18,9 +18,9 @@ namespace GestorDeTareas.Infrastructure.Servicios
 
         public UsuariosDto? ObtenerDatosUsuario(long id) => _repositorio.ObtenerUsuarioPorId(id);
 
-        public Usuarios? ObtenerPorEmail(string email) => _repositorio.ObtenerPorEmail(email);
-
         public List<UsuariosDto> ObtenerPorDatosUsuario(string? nombre, string? apellidos, string? email, TipoUsuario? tipoUsuario) => _repositorio.ObtenerPorDatosUsuario(nombre, apellidos, email, tipoUsuario);
+
+        public Usuarios ObtenerPorLogin(string email, string contrasenia) => _repositorio.ObtenerPorLogin(email, contrasenia);
 
         public void EliminarUsuario(long id) => _repositorio.EliminarUsuario(id);
 
