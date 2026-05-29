@@ -45,7 +45,7 @@ namespace GestorDeTareas.Infrastructure.Servicios
 
         public ClaveResponseDto? Login(LoginUsuarioDto dto)
         {
-            var usuario = _repositorio.ObtenerPorLogin(dto.Email);
+            var usuario = _repositorio.ObtenerPorLogin(dto.Email, dto.Contrasenia);
             if (usuario == null) return null;
 
             if (!BCrypt.Net.BCrypt.Verify(dto.Contrasenia, usuario.Contrasenia))
