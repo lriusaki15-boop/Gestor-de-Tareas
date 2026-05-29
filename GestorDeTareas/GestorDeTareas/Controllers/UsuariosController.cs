@@ -20,6 +20,7 @@ namespace GestorDeTareas.Controllers
         /// Obtiene los datos de un Usuario.
         /// </summary>
         /// <returns>Devuelve la informacion de 1 Usuario.</returns>
+        [Authorize]
         [HttpGet("ObtenerUsuarioPorID/{id}")]
         public IActionResult ObtenerUsuarioPorId(long id)
         {
@@ -35,6 +36,7 @@ namespace GestorDeTareas.Controllers
         /// Obtiene un listado con la informacion basica de los Usuarios.
         /// </summary>
         /// <returns>Devuelve la informacion de todos los Usuarios.</returns>
+        [Authorize]
         [HttpGet("ObtenerListadoUsuarios/")]
         public IActionResult ObtenerListadoUsuarios()
         {
@@ -50,6 +52,7 @@ namespace GestorDeTareas.Controllers
         /// Obtiene el Usuario por su correo electronico.
         /// </summary>
         /// <returns>Devuelve la informacion de un Usuario por su email.</returns>
+        [Authorize]
         [HttpGet("ObtenerUsuarioPorEmail/{email}")]
         public IActionResult ObtenerUsuarioPorEmail(string email)
         {
@@ -65,6 +68,7 @@ namespace GestorDeTareas.Controllers
         /// Obtiene los datos uno o varios usuarios segun porque datos se le pasen Usuario.
         /// </summary>
         /// <returns>Devuelve la informacion de 1 o varios Usuarios.</returns>
+        [Authorize]
         [HttpGet("ObtenerUsuarioPorID")]
         public IActionResult ObtenerPorDatosUsuario(string? nombre, string? apellidos, string? email, TipoUsuario? tipoUsuario)
         {
@@ -94,10 +98,13 @@ namespace GestorDeTareas.Controllers
         /// <returns>Actualiza los datos de un Usuario.</returns>
         //Hay que actualizar bien al Usuario.
         [HttpPut("ActualizarDatosUsuario/{id}")]
-        public IActionResult ActualizarDatosUsuario(long id)
+        public IActionResult ActualizarDatosUsuario(long id,[FromBody] UsuariosDto usuarioDto)
         {
-            var usuario = _servicio.ObtenerDatosUsuario(id);
-            _servicio.ActualizarUsuario(usuario);
+            if (id != usuarioDto.Id)
+                return BadRequest();
+
+            _servicio.ActualizarUsuario(usuarioDto);
+
             return NoContent();
         }
     }

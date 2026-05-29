@@ -22,6 +22,7 @@ namespace GestorDeTareas.Controllers
         /// Obtiene una tarea en especifica.
         /// </summary>
         /// <returns>Devuelve la informacion de 1 tarea al completo.</returns>
+        [Authorize]
         [HttpGet("ObtenerTareasPorID/{id}")]
         public IActionResult ObtenerTareaPorId(long id)
         {
@@ -37,6 +38,7 @@ namespace GestorDeTareas.Controllers
         /// Obtiene todas las tareas del sistema.
         /// </summary>
         /// <returns>Lista de tareas con el nombre de su usuario asignado.</returns>
+        [Authorize]
         [HttpGet("ObtenerTodasTareas")]
         public IActionResult ObtenerTodasTareas()
         {
@@ -52,6 +54,7 @@ namespace GestorDeTareas.Controllers
         /// Elimina una tarea en especifico.
         /// </summary>
         /// <returns>No devuleve nada a no ser de que haya fallado.</returns>
+        [Authorize]
         [HttpDelete("EliminarTarea/{id}")]
         public IActionResult EliminarTarea(long id)
         {
@@ -63,6 +66,7 @@ namespace GestorDeTareas.Controllers
         /// Actualiza el estado de una tarea.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
+        [Authorize]
         [HttpPut("ActualizarEstadoTarea/{id}/{estado}")]
         public IActionResult CompletarTarea(long id, EstadoTarea estado, [FromQuery] string? motivoCancelacion)
         {
@@ -70,11 +74,12 @@ namespace GestorDeTareas.Controllers
             return NoContent();
         }
 
-        
+
         /// <summary>
         /// Actualiza la Prioridad de una tarea.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
+        [Authorize]
         [HttpPut("ActualizarPrioridadTarea/{id}/{prioridad}")]
         public IActionResult ActualizaPrioridadTarea(long id, PrioridadTarea prioridad)
         {
@@ -86,8 +91,8 @@ namespace GestorDeTareas.Controllers
         /// Crea una tarea nueva.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
+        [Authorize]
         [HttpPost("CrearTarea")]
-
         public IActionResult CrearTarea([FromBody] CrearTareaDto tareaNueva)
         {
             tareaNueva.FechaCreacion = DateTime.Now;
