@@ -95,7 +95,6 @@ namespace GestorDeTareas.Controllers
         [HttpPost("CrearTarea")]
         public IActionResult CrearTarea([FromBody] CrearTareaDto tareaNueva)
         {
-            tareaNueva.FechaCreacion = DateTime.Now;
             if(tareaNueva.Estado != EstadoTarea.Pendiente)
             {
                 tareaNueva.Estado = EstadoTarea.Pendiente;

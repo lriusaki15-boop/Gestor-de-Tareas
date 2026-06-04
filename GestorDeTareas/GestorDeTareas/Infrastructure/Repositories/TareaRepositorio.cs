@@ -24,7 +24,7 @@ namespace GestorDeTareas.Infrastructure.Repositories
                 Titulo = tarea.Titulo,
                 Descripcion = tarea.Descripcion,
                 Responsable = tarea.Responsable,
-                FechaCreacion = tarea.FechaCreacion, 
+                FechaCreacion = DateTime.Now, 
                 Estado = tarea.Estado, 
                 Prioridad = tarea.Prioridad, 
                 UsuarioId = tarea.UsuarioId

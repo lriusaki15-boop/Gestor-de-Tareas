@@ -69,7 +69,7 @@ namespace GestorDeTareas.Controllers
         /// </summary>
         /// <returns>Devuelve la informacion de 1 o varios Usuarios.</returns>
         [Authorize]
-        [HttpGet("ObtenerUsuarioPorID")]
+        [HttpGet("ObtenerUsuarioPorDatos")]
         public IActionResult ObtenerPorDatosUsuario(string? nombre, string? apellidos, string? email, TipoUsuario? tipoUsuario)
         {
             var usuario = _servicio.ObtenerPorDatosUsuario(nombre, apellidos, email, tipoUsuario);
