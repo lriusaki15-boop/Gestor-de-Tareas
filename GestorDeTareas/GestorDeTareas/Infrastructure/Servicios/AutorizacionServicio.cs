@@ -87,7 +87,9 @@ namespace GestorDeTareas.Infrastructure.Servicios
             return new ClaveResponseDto
             {
                 Clave = new JwtSecurityTokenHandler().WriteToken(token),
-                Expira = expiracion
+                Expira = expiracion,
+                Nombre = usuario.Nombre,
+                Id = usuario.Id
             };
         }
     }
