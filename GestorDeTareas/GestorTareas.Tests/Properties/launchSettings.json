@@ -2,7 +2,7 @@
   "profiles": {
     "GestorTareas.Tests": {
       "commandName": "Project",
-      "workingDirectory": "C:\\Users\\Oceano\\Desktop\\Proyecto\\GestorDeTareas"
+      "workingDirectory": "$(ProjectDir)"
     }
   }
 }
