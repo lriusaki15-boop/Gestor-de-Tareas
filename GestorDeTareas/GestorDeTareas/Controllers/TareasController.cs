@@ -88,6 +88,18 @@ namespace GestorDeTareas.Controllers
         }
 
         /// <summary>
+        /// Actualiza la Prioridad de una tarea.
+        /// </summary>
+        /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>
+        [Authorize]
+        [HttpPut("ActualizarTarea")]
+        public IActionResult ActualizaTarea(TareaDto tarea)
+        {
+            _servicio.ActualizarTarea(tarea);
+            return NoContent();
+        }
+
+        /// <summary>
         /// Crea una tarea nueva.
         /// </summary>
         /// <returns>No devuleve nada a no ser que haya habido un fallo.</returns>

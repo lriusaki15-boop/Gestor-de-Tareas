@@ -50,7 +50,21 @@ namespace GestorDeTareas.Infrastructure.Servicios
             
             tarea.Prioridad = prioridad;
             _repositorio.Actualizar(tarea);
+        }
 
+        public void ActualizarTarea(TareaDto tareaDto)
+        {
+            var tarea = _repositorio.ObtenerPorId(tareaDto.Id) ?? throw new KeyNotFoundException($"No existe la tarea con Id {tareaDto.Id}");
+
+            tarea.Titulo = tareaDto.Titulo;
+            tarea.Descripcion = tareaDto.Descripcion;
+            tarea.Estado = tareaDto.Estado;
+            tarea.Prioridad = tareaDto.Prioridad;
+            if(tareaDto.Estado == EstadoTarea.Cancelada)
+            {
+                tarea.MotivoCancelacion = tareaDto.MotivoCancelacion;
+                tarea.FechaFinTarea = DateTime.Now;
+            }
             _repositorio.Actualizar(tarea);
         }
     }
